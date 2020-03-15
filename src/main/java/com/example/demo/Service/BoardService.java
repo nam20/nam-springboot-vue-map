@@ -10,6 +10,7 @@ import com.example.demo.DB.Entity.Comment;
 import com.example.demo.DB.Entity.User;
 import com.example.demo.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -76,27 +77,55 @@ public class BoardService {
     }
 
 
-    public List<BoardDTO> allBoard(int page, int size){
+    public Map<String,Object> allBoard(int page, int size){
 
-        List<Board> boardList = boardRepository.findByBoardAvailable(true, PageRequest.of(page,size)).getContent();
+//        List<Board> boardList = boardRepository.findByBoardAvailable(true, PageRequest.of(page,size)).getContent();
+        Page<Board> boardPage = boardRepository.findByBoardAvailable(true,PageRequest.of(page, size));
+//        System.out.println("======");
+//        System.out.println("======");
+//        System.out.println("======");
+//
+//        System.out.println("getTotalPages: " + boardPage.getTotalPages());
+//        System.out.println("gisLastPage: " + boardPage.isLast());
+//
+//        System.out.println("======");
+//        System.out.println("======");
+//        System.out.println("======");
 
         List<BoardDTO> boardDTOList = new ArrayList<>();
-        boardList.forEach(board -> boardDTOList.add(entityConvertDTO.boardDTOBuilder(board,entityConvertDTO.userDTOBulider(board.getUser()))));
+        boardPage.getContent().forEach(board -> boardDTOList.add(
+                entityConvertDTO.boardDTOBuilder(board,
+                entityConvertDTO.userDTOBulider(board.getUser()))));
 
-        return boardDTOList;
+        Map<String,Object> map = new HashMap<>();
+        map.put("boardList",boardDTOList);
+        map.put("hasNextPage",boardPage.hasNext());
+        map.put("totalPages",boardPage.getTotalPages());
+        //map.put("page",boardPage.getNumber());
+
+
+
+        return map;
     }
 
 
-    public List<BoardDTO> boardReviewByPlaceId(String placeId, int page, int size){
+    public Map<String,Object> boardReviewByPlaceId(String placeId, int page, int size){
         List<BoardDTO> boardDTOList = new ArrayList<>();
 
-        boardRepository.findByPlaceIdAndBoardAvailable(placeId,true, PageRequest.of(page,size)).getContent().forEach(board -> {
+        Page<Board> boardPage =  boardRepository.findByPlaceIdAndBoardAvailable(placeId,true, PageRequest.of(page,size));
+        boardPage.getContent().forEach(board -> {
             boardDTOList.add(entityConvertDTO.boardDTOBuilder(board,entityConvertDTO.userDTOBulider(board.getUser())));
         });
+        //            //지역id로 찾은 boardList를 순회하며 DTOBuilder를 사용해 엔티티를 dto로 변환한 뒤 dtoList에 추가
 
-//            //지역id로 찾은 boardList를 순회하며 DTOBuilder를 사용해 엔티티를 dto로 변환한 뒤 dtoList에 추가
+        Map<String,Object> map = new HashMap<>();
+        map.put("boardList",boardDTOList);
+        map.put("hasNextPage",boardPage.hasNext());
+        map.put("totalPages",boardPage.getTotalPages());
 
-        return boardDTOList;
+
+
+        return map;
     }
 
     public Map<String,Double> avgBoardGrade(String placeId){
@@ -165,6 +194,7 @@ public class BoardService {
             });
 
             files.removeIf(file->!newFiles.contains(file));
+
 
             if(multipartFile!=null) {
 

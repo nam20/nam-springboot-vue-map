@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/components/index'
-import hello from '@/components/hello'
-import test from '@/components/test'
-import board from '@/components/board'
+
+
 import kakaomap from '@/components/kakaomap'
 import kakaomap2 from '@/components/kakaomap2'
 import kakaomap3 from '@/components/kakaomap3'
@@ -18,25 +17,15 @@ Vue.use(Router)
 
 const router = new Router({
  
-  mode: 'history'
- ,
+//   mode: 'history'
+//  ,
   routes: [
     {
       path: '/',
       name: 'index',
       component: index
     },
-    {
-      path: '/hello',
-      name: 'hello',
-      component: hello,
-      props: true
-     },
-     {
-      path: '/test',
-      name: 'test',
-      component: test
-    },
+   
     {
       path: '/board/:placeId/:placeName',
       component: () => import('@/components/placeBoard.vue'),
@@ -100,57 +89,59 @@ router.beforeEach((to,from,next) => {
   axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
 
 
-  if(localStorage.getItem('token')){
-    axios({
-      method: 'post',
-      url: '/auth'
-    })
-    .then(response=>{
+  if(localStorage.getItem('token')){  //토큰 여부
+      axios({
+        method: 'post',
+        url: '/auth'
+      })
+      .then(response=>{
 
-      if(to.matched.some((routeInfo) => {
-        return routeInfo.meta.authRequired;
-      })){
+        if(to.matched.some((routeInfo) => {
+          return routeInfo.meta.authRequired;   //인증 필요 여부
+        })){
 
-          if(response.data.Auth != 'FAIL') {
+              if(response.data.Auth !== 'FAIL') {   //인증 성공 여부
 
-            store.commit('setIsLogin',true);
-            next();
-          }
-          else {
-            window.alert('로그인이 필요합니다.'); 
-            store.commit('setIsLogin',false);  
-            localStorage.clear();
-            next('/');
-          }
+                store.commit('setIsLogin',true);
+                next();
 
-      }else{
-          if(response.data.Auth != 'FAIL') {
-            store.commit('setIsLogin',true);        
-          }
-          else {
-            store.commit('setIsLogin',false);  
-            localStorage.clear();
-          }
-          next();
-      }   
+              } else {   //토큰 변조, 만료
 
-    })
-    .catch(err=>{
-      console.log(err);
-    })
+                window.alert('로그인이 필요합니다.'); 
+                store.commit('setIsLogin',false);  
+                localStorage.clear();
+                next('/');
+              }
+
+        }else{
+              if(response.data.Auth !== 'FAIL') {  //인증 성공 여부 axios 
+                store.commit('setIsLogin',true);        
+              }
+              else {  //토큰 변조, 만료
+                store.commit('setIsLogin',false);  
+                localStorage.clear();
+              }
+              next();
+        }   
+
+      })
+      .catch(err=>{
+        console.log(err);
+      })
 
   }else{
-    if(to.matched.some((routeInfo) => {
-      return routeInfo.meta.authRequired;
-    })){
-      window.alert('로그인이 필요합니다.');
-       
-      next('/');
-    }
-    else {
-      store.commit('setIsLogin',false);  
-      next();
-    }
+      if(to.matched.some((routeInfo) => { 
+        return routeInfo.meta.authRequired; //인증 필요 여부
+      })){
+        window.alert('로그인이 필요합니다.');
+        
+        next('/');
+
+      } else {
+
+        store.commit('setIsLogin',false);  
+        next();
+      }
 
   }
   

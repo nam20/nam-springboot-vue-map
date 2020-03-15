@@ -51,7 +51,7 @@ public class BoardController {
     }
 
     @GetMapping("/allBoard/{page}/{size}")
-    public List<BoardDTO> allBoard(@PathVariable("page") int page,@PathVariable("size") int size){
+    public Map<String,Object> allBoard(@PathVariable("page") int page,@PathVariable("size") int size){
 
        return boardService.allBoard(page,size);
 
@@ -107,7 +107,7 @@ public class BoardController {
 
 
     @GetMapping(value="/boards/{placeId}/{page}/{size}")
-    public List<BoardDTO> placeBoardView(@PathVariable("placeId") String placeId,@PathVariable("page") int page,@PathVariable("size") int size){
+    public Map<String,Object> placeBoardView(@PathVariable("placeId") String placeId,@PathVariable("page") int page,@PathVariable("size") int size){
 
         return boardService.boardReviewByPlaceId(placeId, page, size);
 
@@ -136,9 +136,9 @@ public class BoardController {
     }
 
     @PostMapping("/comment")
-    public void commentWrite(@RequestParam("comment") String commentContent, @RequestParam("token") String token, @RequestParam("boardId") String boardId){
+    public void commentWrite(/*@RequestParam("comment") String commentContent, @RequestParam("token") String token, @RequestParam("boardId") String boardId,*/@RequestBody Map<String,String> payload){
 
-        boardService.commentWrite(commentContent, token, boardId);
+        boardService.commentWrite(payload.get("comment"), payload.get("token"), payload.get("boardId"));
 
     }
 

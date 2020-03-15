@@ -3,25 +3,14 @@
 
 	
 
-		<!-- Wrapper -->
+	
 			<div style="background-color:#e6e6e6ea;">
 				
-					<header>
+						<header>
 							<h1 style="cursor:pointer;margin:0;" @click="$router.push('/')">HeeJun</h1>
-
-				
 						</header>
 
-			
-				<!-- <nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav> -->
-			
-					
-
-				<!-- Main -->
+	
 					<div id="main">
 						
 							
@@ -49,10 +38,6 @@
 										<img  class="boardImage" @click="carouselModal= true" :src="'upload/'+boardImage" alt="">
 									</span>
 								</div>
-								
-
-							
-							
 							
 						</div>
 						
@@ -61,11 +46,13 @@
 
 								<div v-if="board.comments.length" class="commentsList" >
 									<div v-for="comment in board.comments" :key="comment" class="comment" >
+
 										<div style="float:left;margin:10px 0 0 10px;">
 											<img v-if="comment.user.userProfile" :src="'upload/' + comment.user.userProfile" class="commentImage" alt="" >
 											<img v-else src="upload/default.png" class="commentImage" alt="">
 											<strong style="margin:0 0 0 10px;vertical-align:top;">{{comment.user.userName}}</strong>
 										</div>
+
 										<p style="float:right;margin:5px 10px 0 0;">{{comment.createdDate.substring(0,10)}}</p>
 										
 										<p class="event_desc" >{{comment.commentContent}}</p>
@@ -77,11 +64,12 @@
 								<textarea v-model="comment" v-on:keyup.enter="commentWrite" name="" id="" cols="30" rows="10" style="border-top-color:#E9E9E9;"></textarea>
 								
 								<div style="margin-bottom:30px;">
-									<button v-bind:disabled="! $store.state.isLogin" @click="commentWrite">댓글 등록</button>
+									<button @click="$router.go(-1)" >돌아가기</button>
+									<button v-bind:disabled="! $store.state.isLogin" @click="commentWrite">댓글등록</button>
 
 									
 
-									<div v-if="boardUpdate">
+									<div v-if="isWriter">
 										<button @click="$router.push(`/boardUpdate/${boardId}`)">수정하기</button>
 										<button @click="deleteBoard">삭제하기</button>
 									</div>
@@ -99,13 +87,15 @@
 
 							<!-- <image-modal></image-modal> -->
 							<div class="modal-mask" v-if="carouselModal">
-							<div class="modal-wrapper">
-								<div class="modal-container">
-									<div>
-									<i class="fas fa-times fa-lg" @click="carouselModal=false" style="cursor:pointer;float:right"></i>
+								<div class="modal-wrapper">
+									<div class="modal-container">
+										<div>
+											<i class="fas fa-times fa-lg" @click="carouselModal=false" style="cursor:pointer;float:right"></i>
+										</div>
+										<myCarousel :data="carouselArr" style="margin-top: 25px;" :autoplay="false"></myCarousel>
 									</div>
-							<myCarousel :data="carouselArr" style="margin-top: 25px;" :autoplay="false"></myCarousel>
-							</div></div></div>
+								</div>
+							</div>
 					</footer>
 
 				
@@ -121,12 +111,12 @@
 </template>
 
 <script>
-import imageModal from './common/imageModal'
+
 import VueCarousel from '@chenfengyuan/vue-carousel';
 
 export default {
 	components:{
-		imageModal,
+		
 		myCarousel: VueCarousel
 		
 	},
@@ -141,7 +131,7 @@ export default {
 			},
 			comment: '',
 			commentInterval:'',
-			boardUpdate: false,
+			isWriter: false,
 			carouselArr:[],
 			carouselModal: false
 
@@ -150,7 +140,8 @@ export default {
 	,
 	props: ['boardId']
 	,created(){
-		this.getBoard();
+		this.loadBoards();
+
 		this.commentInterval = setInterval(()=>{
 				this.$axios({
 					method:'get',
@@ -162,7 +153,7 @@ export default {
 					this.board.comments = response.data;
 					
 				})
-			}, 2000)
+			}, 3000)
 
 		
 	},
@@ -170,7 +161,7 @@ export default {
 		clearInterval(this.commentInterval);
 	},
 	methods:{
-		getBoard(){
+		loadBoards(){
 			this.$axios({
 			method: 'get',
 			url: `/board/${this.boardId}`
@@ -195,9 +186,7 @@ export default {
 			
 			// this.board.createdTime = this.board.createdTime.substring(0,10);
 			// this.board.lastModifiedTime = this.board.lastModifiedTime.substring(0,10);
-			console.log(this.board);
-			console.log(this.board.user);
-			console.log(this.board.comments);
+		
 			
 			this.board.files.forEach(file=>{
 				this.carouselArr.push(`<div class="example-slide"><img src="upload/${file}" style="width:600px;height:600px;" alt=""></div>`)
@@ -206,7 +195,7 @@ export default {
 			
 			
 
-			if(this.board.user.token === localStorage.getItem('token')) this.boardUpdate = true
+			if(this.board.user.token === localStorage.getItem('token')) this.isWriter = true
 
 			//this.getContent(this.comments);	
 			
@@ -219,26 +208,31 @@ export default {
 		commentWrite(){
 
 
-			var frm = new FormData();
-			frm.set('comment',this.comment);
-			frm.set('token',localStorage.getItem('token'));
-			frm.set('boardId',this.boardId);
+			// var frm = new FormData();
+			// frm.set('comment',this.comment);
+			// frm.set('token',localStorage.getItem('token'));
+			// frm.set('boardId',this.boardId);
 
-			this.comment = ''
+			
 
 			this.$axios({
 				method: 'post',
 				url: `/comment`,
-				data: frm,
+				data: {
+					comment:this.comment,
+					token:localStorage.getItem('token'),
+					boardId:this.boardId
+				},
 				headers:{
 					Authorization : `Bearer ${localStorage.getItem('token')}`
 				}
 			})
 			.then(response=>{
-				if(response.data.Auth=='FAIL'){
+				if(response.data.Auth === 'FAIL'){
 					window.alert('로그인이 필요합니다')
-					this.comment = ''
 				}
+
+				this.comment = ''
 			})
 			.catch(err=>{
 				console.log(err);
@@ -246,9 +240,14 @@ export default {
 			})
 		},
 		deleteBoard(){
-			this.$axios({
-				method: 'patch',
-				url: `board/${this.boardId}`,
+			// this.$axios({
+			// 	method: 'patch',
+			// 	url: `/board/${this.boardId}`,
+			// 	headers:{
+			// 		Authorization : `Bearer ${localStorage.getItem('token')}`
+			// 	}
+			// })
+			this.$axios.patch(`/board/${this.boardId}`,{
 				headers:{
 					Authorization : `Bearer ${localStorage.getItem('token')}`
 				}

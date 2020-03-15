@@ -8,43 +8,10 @@
 
 		
 		</header>
-			<!-- <home-header></home-header> -->
-		<!-- Wrapper -->
+		
 			<div id="wrapper">  
 
-				<!-- Header -->
-					<!-- <header id="header">
-						<div class="inner">
-
-							
-								<a href="/" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Phantom</span>
-								</a>
-
-						
-								<nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav>
-
-						</div>
-					</header> -->
-					
-
-				<!-- Menu -->
-					<!-- <nav id="menu">
-						<h2>Menu</h2>
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="generic.html">Ipsum veroeros</a></li>
-							<li><a href="generic.html">Tempus etiam</a></li>
-							<li><a href="generic.html">Consequat dolor</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-					</nav> -->
-
-				<!-- Main -->
+			
 					<div id="main">
 						<h1>모든 리뷰</h1>
 						<div class="inner">
@@ -52,35 +19,13 @@
 							
 							<section class="tiles">
 
-
-
-								<article class="style3" v-for="board in arr" :key="board">
-									<span class="image">
-										<img v-if="board.files.length" :src="'upload/'+ board.files[0]" alt=""/>
-										<img v-else src="upload/defaultImage.jpg" alt="" />
-									</span>
-									<router-link :to="`/boardReview/${board.id}`"  style="padding:16px 16px 16px 0;">
-										<p class="board_info">{{board.placeName}}</p>
-										<p class="board_info">{{board.grade}}</p>
-										<p class="text_overflow" >{{board.boardContent}}</p>
-
-										
-										<!-- <div class="content">
-											<p class="text_overflow" >{{board.boardContent}}</p>
-											<h2>{{board.grade}}</h2>
-										</div> -->
-									</router-link>
-								</article>
-								
-
-								
-
+								<board-content v-for="board in boards" :key="board" :board="board">
 
 							</section>
 							<br>
 							<section>
-								<div v-if="paging">
-										<button v-if="arr.length < boardCount" @click="boardArr">더보기</button>
+								<div v-if="totalPages > 1">
+										<button v-if="hasNextPage" @click="loadBoards">더보기</button>
 										<button v-else @click="slice">접기</button>
 								</div>
 									<H1 style="margin:1em 0 1em;">{{searchResult}}</H1>
@@ -91,51 +36,14 @@
 						</div>
 					</div>
 
-				<!-- Footer -->
 					<footer id="footer">
-						<!-- <div class="inner">
-							<section>
-								<h2>Get in touch</h2>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<input type="text" name="name" id="name" placeholder="Name" />
-										</div>
-										<div class="field half">
-											<input type="email" name="email" id="email" placeholder="Email" />
-										</div>
-										<div class="field">
-											<textarea name="message" id="message" placeholder="Message"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send" class="primary" /></li>
-									</ul>
-								</form>
-							</section>
-							<section>
-								<h2>Follow</h2>
-								<ul class="icons">
-									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
-									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
-									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
-								</ul>
-							</section>
-							<ul class="copyright">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div> -->
+						
 					</footer>
 
 			</div>
 			
 
-		<!-- Scripts -->
+
 			
 		
 	</body>
@@ -143,49 +51,51 @@
 </template>
 
 <script>
-
+import boardContent from './boardContent'
 
 export default {
+	components:{
+		boardContent
+	},
 		
-		 data(){
+	data(){
 			return{
-				arr :  [],
+				boards :  [],
 				searchResult : '',
 				page: 0,
-				paging: true,
+				totalPages: 0,
 				pageSize : 9,
-				boardCount: 0
+				hasNextPage: true
         }
     },
-    mounted(){
-		this.boardArr();
-		this.allBoardCount();
+    created(){
+		this.loadBoards();
+		//this.allBoardCount();
 		
 	},
 	watch:{
-		arr(){
-			if(!this.arr.length) this.searchResult = '리뷰가 하나도 없습니다'
-			console.log(this.arr.length);
+		boards(){
+			if(!this.boards.length) this.searchResult = '리뷰가 없습니다'
+			
 			
 		}
 	},
     methods:{
-        boardArr(){
+        loadBoards(){
 				
             this.$axios({
 				method: 'get',
 				url: `/allBoard/${this.page}/${this.pageSize}`
 			})
-            .then(response =>{
-				console.log(response.data);
-				console.log(response);
-				
-				
-				if(response.data){
+            .then(res =>{
+				console.log(res.data)
+				if(res.data){
+
+					const boardPaging = res.data
 					
-					this.arr = this.arr.concat(response.data);
+					this.boards = this.boards.concat(boardPaging.boardList);
 					
-					this.arr.forEach(board=>{
+					this.boards.forEach(board=>{
 						switch(board.grade){
 							case 'GOOD': board.grade = '맛있다!'
 								break;
@@ -197,14 +107,16 @@ export default {
 								break;
 						}
 					})
-					console.log(this.page);
 					
 					this.page += 1;
+
+					
+					this.totalPages = boardPaging.totalPages
+
+					this.hasNextPage = boardPaging.hasNextPage
 					
 				}
 				
-				
-                
 
             })
             .catch(error=>{
@@ -214,27 +126,28 @@ export default {
 
 		},
 		slice(){
-			this.arr = this.arr.slice(0,this.pageSize);
+			this.boards = this.boards.slice(0,this.pageSize);
+			this.hasNextPage = true;
 			this.page = 1;
 		},
-		allBoardCount(){
-			this.$axios({
-				method: 'get',
-				url: `/boardCount`
-			})
-			.then(response=>{
-				console.log(response.data);
+		// allBoardCount(){
+		// 	this.$axios({
+		// 		method: 'get',
+		// 		url: `/boardCount`
+		// 	})
+		// 	.then(response=>{
+		// 		console.log(response.data);
 		
 				
-				this.boardCount = response.data;
-				if(this.boardCount <= this.pageSize)  this.paging = false;
+		// 		this.boardCount = response.data;
 				
-			})
-			.catch(err=>{
-				console.log(err);
 				
-			})
-		}
+		// 	})
+		// 	.catch(err=>{
+		// 		console.log(err);
+				
+		// 	})
+		// }
 	}
 }
 </script>

@@ -23,13 +23,13 @@
                     
                     <ul>
                         <li>
-                            <button :class="{active : grade == 'GOOD'}" @click="grade = 'GOOD'">맛있다!</button>
+                            <button :class="{active : grade === 'GOOD'}" @click="grade = 'GOOD'">맛있다!</button>
                         </li>
                         <li>
-                            <button :class="{active : grade == 'SOSO'}" @click="grade = 'SOSO'">평범하다!</button>
+                            <button :class="{active : grade === 'SOSO'}" @click="grade = 'SOSO'">평범하다!</button>
                         </li>
                         <li>
-                            <button :class="{active : grade == 'BAD'}" @click="grade = 'BAD'">별로!</button>
+                            <button :class="{active : grade === 'BAD'}" @click="grade = 'BAD'">별로!</button>
                         </li>
                     </ul>
                 
@@ -140,7 +140,7 @@ export default {
                 data : frm,
                 headers:{
                     'Content-Type': 'multipart/form-data',
-                    Authorization : `Bearer ${localStorage.getItem("token")}`
+                    'Authorization' : `Bearer ${localStorage.getItem("token")}`
                 }
 
             })
@@ -163,11 +163,7 @@ export default {
             })
         },
         fileSelect(){
-            console.log(this.$refs);
-            //console.log(document.getElementById('files').files[0]);
-            
-            //this.boardImage = Array.from(this.$refs.boardImage.files);
-
+       
             let uploadedFiles = this.$refs.boardImage.files;
 
             for(var i = 0; i< uploadedFiles.length; i++){
@@ -176,18 +172,13 @@ export default {
                // var vm = this;
                 reader.onload = (e) =>{
                     this.image.push(e.target.result);
-                    console.log(this.image);
-                    
                 };
                 reader.readAsDataURL(uploadedFiles[i]);
 
             }
             let list = new DataTransfer();
             this.$refs.boardImage.files = list.files;
-            console.log(this.boardImage);
-            console.log(this.boardImage.length);
-            //this.createImage(this.$refs.boardImage.files[0])
-            
+         
             
             
         },
@@ -195,8 +186,6 @@ export default {
             this.boardImage.splice(key,1);
             this.image.splice(key,1)
         
-            console.log(this.boardImage);
-            console.log(this.image);
             
             
         },

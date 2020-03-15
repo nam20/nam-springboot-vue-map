@@ -63,7 +63,7 @@ public class UserService {
 
 
 
-    public void userProfileUpdate(MultipartFile multipartFile, String token, String profileName){
+    public void userProfileUpdate(MultipartFile multipartFile, String token){
 
         String savePath = "C:/projects/demo-nam22/src/main/webapp/upload/";
 
@@ -90,7 +90,7 @@ public class UserService {
                 user.setUserProfile(nfile.getName());
                 userRepository.save(user);
 
-            }else if(profileName.equals("")){
+            }else{
 
                 if(user.getUserProfile()!=null){
                     File deleteFile = new File(savePath + user.getUserProfile());

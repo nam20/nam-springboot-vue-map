@@ -4,6 +4,7 @@ import com.example.demo.DB.Entity.Board;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -28,5 +29,8 @@ public interface BoardRepository  extends JpaRepository<Board,Long> {
     Page<Board> findByPlaceIdAndBoardAvailable(String placeId, Boolean boardAvailable , Pageable pageable);
 
     Page<Board> findByBoardAvailable(Boolean boardAvailable, Pageable pageable);
+
+
+
 
 }

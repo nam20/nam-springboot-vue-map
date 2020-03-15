@@ -1,17 +1,14 @@
 package com.example.demo.Controller;
 
 import com.example.demo.DB.DTO.UserDTO;
-import com.example.demo.DB.Entity.User;
 import com.example.demo.DB.EntityConvertDTO;
-import com.example.demo.Service.UserService;
 import com.example.demo.Repository.UserRepository;
+import com.example.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.Map;
 
 @RestController
 public class UserController {
@@ -30,18 +27,21 @@ public class UserController {
 
 
     @PostMapping(value="/register")
-    public String join(@RequestParam("userName") String userName, @RequestParam("userPassword") String userPassword){
+    public String join(@RequestBody Map<String, String> payload){
 
-        return userService.register(userName,userPassword);
+        return userService.register(payload.get("userName"),payload.get("userPassword"));
 
     }
 
 
 
     @PostMapping(value="/login")
-    public String login(@RequestParam("userName") String userName, @RequestParam("userPassword") String userPassword){
+    public String login(@RequestBody Map<String, String> payload){
 
-        return userService.login(userName,userPassword);
+        System.out.println(payload);
+
+        //return "";
+        return userService.login(payload.get("userName"),payload.get("userPassword"));
     }
 
 
@@ -53,17 +53,17 @@ public class UserController {
     }
 
     @PatchMapping("/user/profile")
-    public void userProfileUpdate(@RequestParam(value = "profile",required = false) MultipartFile multipartFile,@RequestParam("token") String token, @RequestParam(value = "profileName",defaultValue = "") String profileName){
+    public void userProfileUpdate(@RequestParam(value = "profile",required = false) MultipartFile multipartFile,@RequestParam("token") String token /*@RequestParam(value = "profileName",defaultValue = "") String profileName*/){
 
-       userService.userProfileUpdate(multipartFile, token, profileName);
+       userService.userProfileUpdate(multipartFile, token);
 
     }
 
 
-    @PostMapping("/user/profileName")
-    public String getUserProfile(@RequestParam("token") String token){
-
-       return userService.getUserProfile(token);
+    @PostMapping("/user/profile")
+    public String getUserProfile(/*@RequestParam("token") String token,*/ @RequestBody Map<String,String> payload){
+        System.out.println(payload);
+       return userService.getUserProfile(payload.get("token"));
     }
 
 

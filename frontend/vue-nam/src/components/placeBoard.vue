@@ -45,21 +45,9 @@
 
 
 
-								<article class="style3" v-for="board in arr" :key="board">
-									<span class="image" >
-										<img v-if="board.files.length" :src="'upload/'+ board.files[0]" alt="" />
-										<img v-else src="upload/defaultImage.jpg" alt="" > 
-									</span>
-									<router-link :to="`/boardReview/${board.id}`" style="padding:16px 16px 16px 0;">
-										<p style="margin:0 0 15px 0;text-shadow: #333333 1px 0 3px;font-size:x-large;font-weight:bold;">{{board.grade}}</p>
-										<p class="text_overflow" >{{board.boardContent}}</p>
-										
-										<!-- <div class="content">
-											<p class="text_overflow" >{{board.boardContent}}</p>
-											<h2>{{board.grade}}</h2>
-										</div> -->
-									</router-link>
-								</article>
+								<board-content v-for="board in boards" :key="board" :board="board">
+
+								
 								
 									
 
@@ -67,8 +55,8 @@
 							</section>
 							<br>
 							<section>
-								<div v-if="paging">
-										<button v-if="arr.length < boardCount" @click="boardArr">더보기</button>
+								<div v-if="totalPages > 1">
+										<button v-if="hasNextPage" @click="loadBoards">더보기</button>
 										<button v-else @click="slice">접기</button>
 									</div>
 									<H1 style="margin:1em 0 1em;">{{searchResult}}</H1>
@@ -94,54 +82,56 @@
 </template>
 
 <script>
-
+import boardContent from './boardContent'
 
 export default {
-		
-		 data(){
+	components:{
+		boardContent
+	},
+	data(){
         return{
-			arr : [],
+			boards :  [],
 			searchResult : '',
-			gradeAvg: 0,
-			boardCount : 0,
 			page: 0,
-			paging: true,
-			pageSize: 9
+			totalPages: 0,
+			pageSize : 9,
+			hasNextPage: true
         }
     },
-    mounted(){
-		this.boardArr();
+    created(){
+		this.loadBoards();
 		this.boardGrade();
 		
-		// else{
-		// 			this.searchResult = `리뷰가 없습니다.`
-		// 		}
+
 	},
 	watch:{
-		arr(){
+		boards(){
 			
-			if(!this.arr.length) this.searchResult = `${this.placeName}에 대한 리뷰가 하나도 없습니다`
-			console.log(this.arr.length); 
+			if(!this.boards.length) this.searchResult = `${this.placeName}에 대한 리뷰가 없습니다`
+			
 		}
 	},
     methods:{
-        boardArr(){
+        loadBoards(){
 				
             this.$axios({
 				method: 'get',
 				url: `/boards/${this.placeId}/${this.page}/${this.pageSize}`
 			})
-            .then(response =>{
-				console.log(response.data);
-				console.log(response);
+            .then(res =>{
+				console.log(res.data);
 				
 				
-				if(response.data){
-					// response.data.forEach(element => {
-					// 	this.arr.push(element);
+				
+				if(res.data){
+					// res.data.forEach(element => {
+					// 	this.boards.push(element);
 					// })
-					this.arr = this.arr.concat(response.data);
-					this.arr.forEach(board=>{
+
+					const boardPaging = res.data
+
+					this.boards = this.boards.concat(boardPaging.boardList);
+					this.boards.forEach(board=>{
 						switch(board.grade){
 							case 'GOOD': board.grade = '맛있다!'
 								break;
@@ -153,10 +143,16 @@ export default {
 								break;
 						}
 					})
+
 					this.page += 1;
+
+					this.totalPages = boardPaging.totalPages
+
+					this.hasNextPage = boardPaging.hasNextPage
+
 				}
 
-				console.log(parseInt(this.arr.length / this.pageSize) > 0);
+				
 			
 				
 
@@ -178,10 +174,10 @@ export default {
 				
 				if(response.data.avg){
 					this.gradeAvg = response.data.avg.toFixed(1);
-					this.boardCount = response.data.count;
+					
 				}
 
-				if(this.boardCount <= this.pageSize)  this.paging = false;
+				//if(this.boardCount <= this.pageSize)  this.paging = false;
 				
 			})
 			.catch(err=>{
@@ -190,8 +186,9 @@ export default {
 			})
 		},
 		slice(){
-			this.arr = this.arr.slice(0,this.pageSize);
+			this.boards = this.boards.slice(0,this.pageSize);
 			this.page = 1;
+			this.hasNextPage = true;
 		}
 	},
 	props: ['placeId','placeName']

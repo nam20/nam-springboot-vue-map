@@ -20,15 +20,15 @@
         
       </div>
     
-      <div >
+      <div>
           <div v-if="this.$store.state.isLogin">
-              <button  type="button" @click="logOut">로그아웃</button>
-              <button  @click="getUserProfile(),profileUpdateModal=true">유저 프로필 업데이트</button>
+              <button  @click="logOut()">로그아웃</button>
+              <button  @click="loadProfileImage(),profileUpdateModal=true">유저 프로필 업데이트</button>
           </div>
 
           <div v-else>
-            <button  @click="registerModalOpen()">회원가입 </button>
-            <button  type="button" @click="loginModalOpen()">로그인</button>
+            <button  @click="registerModal = true">회원가입 </button>
+            <button  @click="loginModal = true">로그인</button>
           </div>
         
           
@@ -50,23 +50,27 @@
         <h3 class="modal-default-button"><i class="closeModalBtn fas fa-times fa-lg" @click="userClear()"></i></h3>
        </div>
         <div slot="body" class="loginForm">
-          <input  id="userName" type="text" v-model="userName" name="userName" placeholder="id 입력!!!!" autocomplete="off" style="margin-top:50px;">
+          <input  id="userName" type="text" v-model="userName" name="userName" placeholder="아이디" autocomplete="off" style="margin-top:50px;">
           
-          <input  id="userPassword" type="text" v-model="userPassword" name="userPassword" placeholder="pw 입력!!!!" autocomplete="off">
+          <input  id="userPassword" type="text" v-model="userPassword" name="userPassword" placeholder="비밀번호" autocomplete="off">
 
-          <input  v-if="!!registerModal" id="userPassword2" type="text" v-model="userPassword2" name="userPassword2" placeholder="pw 입력!!!!" autocomplete="off">
-          <p v-show="!!registerModal && userPassword !== userPassword2">비번을 맞춰주십시오</p>
+          <input  v-if="!!registerModal" id="userPasswordCheck" type="text" v-model="userPasswordCheck" name="userPasswordCheck" placeholder="비밀번호 확인" autocomplete="off">
+          <p v-show="!!registerModal && userPassword !== userPasswordCheck">비밀번호를 맞춰주십시오</p>
         </div>
         
         
+
         <div slot="footer" v-if="registerModal">
-           
-        <button :disabled="!userName || !userPassword || userPassword !== userPassword2" type="button" @click="register">회원 가입</button>
+
+          <button :disabled="!userName || !userPassword || userPassword !== userPasswordCheck" type="button" @click="register">회원 가입</button>
+
         </div>
+
 
         <div slot="footer" v-if="loginModal">
             
-        <button :disabled="!userName || !userPassword"  type="button" @click="login">로그인</button>
+          <button :disabled="!userName || !userPassword"  type="button" @click="login">로그인</button>
+
         </div>
 
         
@@ -84,15 +88,15 @@
         <h3 class="modal-default-button"><i class="closeModalBtn fas fa-times fa-lg" @click="removeFile(),profileUpdateModal=false,profileSubmit=false"></i></h3>
       </div>
       <div slot="body" style="margin-top:40px;">
-        <input v-on:change="fileSelect()" ref="userProfile" type="file">
+        <input v-on:change="fileSelect()" ref="newUserProfile" type="file">
         <button @click="addFiles" style="margin-bottom:30px;">이미지 선택</button>
-        <div v-if="profileImage" class="image-wrapper">
-          
-          <img :src="profileImage" style="width:300px;height:300px;border-radius:150px;">
-          <div class="image-delete-box">
-          <i class="closeModalBtn fas fa-times" @click="removeFile(),profileSubmit=true" style="margin:0 7px 0 0;"></i>
+          <div v-if="profileImage" class="image-wrapper">
+      
+            <img :src="profileImage" style="width:300px;height:300px;border-radius:150px;">
+              <div class="image-delete-box">
+                  <i class="closeModalBtn fas fa-times" @click="removeFile(),profileSubmit=true" style="margin:0 7px 0 0;"></i>
+              </div>
           </div>
-      </div>
       </div>
       <div  slot="footer" style="margin-bottom:30px;"><button v-bind:disabled="!profileSubmit" @click="userProfileUpdate()">프로필 변경</button></div>
     </Modal>
@@ -112,13 +116,13 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: '포트폴리오',
+      
       
       
      
       userName: '',
       userPassword: '',
-      userPassword2:'',
+      userPasswordCheck:'',
       registerModal: false,
       loginModal: false,
       failResult: '',
@@ -126,7 +130,7 @@ export default {
 
 
 
-      userProfile:'',
+      newUserProfile:'',
       profileUpdateModal:false,
       profileImage:'',
       profileSubmit:false
@@ -136,7 +140,7 @@ export default {
     }
   },
   created(){
-      //this.getUserProfile();
+      //this.getnewUserProfile();
   },
   methods:{
  
@@ -148,87 +152,77 @@ export default {
    
     register(){
      
-        var frm = new FormData();
-        frm.set('userName',this.userName)
-        frm.set('userPassword',this.userPassword)
-
-     
-        this.$axios({
-        method: 'post',
-        url: `/register`,
-        data: frm
-      })
-      .then((response)=>{
        
+     
+       this.$axios.post('/register',{
+          userName:this.userName,
+          userPassword:this.userPassword
+        })
+        .then((response)=>{
         
-        
-        if(response.data == '중복된 아이디입니다.'){
-
-          this.failResult = response.data;
-          this.userName = ''
-         
-        } else {
           
-          this.userClear();
-          localStorage.setItem("token",response.data);
-          this.$store.commit('setIsLogin',true);
-          //this.$store.state.isLogin = true;
+          
+          if(response.data == '중복된 아이디입니다.'){
+
+            this.failResult = response.data;
+            this.userName = ''
+          
+          } else {
             
-        }
-        
-        
-      })
-      .catch(function(error){
-        console.log(error);
-        
-        
-      });
+            this.userClear();
+            localStorage.setItem("token",response.data);
+            this.$store.commit('setIsLogin',true);
+            window.alert('회원가입되었습니다.')
+            //this.$store.state.isLogin = true;
+              
+          }
+          
+          
+        })
+        .catch(function(error){
+          console.log(error);
+          
+        });
     },
-    registerModalOpen(){
-      this.registerModal = true;
-    },
-    loginModalOpen(){
-      this.loginModal = true;
-    },
+    // registerModalOpen(){
+    //   this.registerModal = true;
+    // },
+    // loginModalOpen(){
+    //   this.loginModal = true;
+    // },
     
     login(){
      
-        var frm = new FormData();
-        frm.set('userName',this.userName)
-        frm.set('userPassword',this.userPassword)
-      
-        this.$axios({
-        method: 'post',
-        url: `/login`,
-        data: frm
-      })
-      .then((response)=>{
-        
-        
-          if(response.data == '아이디 틀림' || response.data == '비번 틀림'){
+        this.$axios.post('/login',{
+          userName:this.userName,
+          userPassword:this.userPassword
+        })
+        .then((res)=>{
+          
+          
+            if(res.data == '없는 아이디입니다.' || res.data == '비밀번호가 틀렸습니다.'){
 
-             this.failResult = response.data;
-         
-          }
-          else {
-              this.userClear();
-              console.log(response.data);
+              this.failResult = res.data;
+          
+            }
+            else {
+                this.userClear();
+                console.log(res.data);
 
-              localStorage.setItem("token",response.data);
+                localStorage.setItem("token",res.data);
+                
+                this.$store.commit('setIsLogin',true);
+                window.alert('로그인되었습니다.')
+
               
-              this.$store.commit('setIsLogin',true);
-              //this.$store.state.isLogin = true;
-
-            //router.push(`/hello/${this.userName}`);
-            
-          }
-         
-        
-      })
-      .catch(function(error){
-          console.log(error);
-            
-      });
+            }
+          
+          
+        })
+        .catch(function(error){
+            console.log(error);
+              
+        });
     }
     ,
     logOut(){
@@ -241,15 +235,13 @@ export default {
     userClear(){
       this.userName = '';
       this.userPassword = '';
-      this.userPassword2 = '';
+      this.userPasswordCheck = '';
       
       this.registerModal = false;
       this.loginModal = false;
       this.failResult = '';
     },
-    routerTest(){
-      router.push(`/board/1`);
-    },
+   
     kakaoMap(){
       this.$router.push(`map3/${this.kakaoMapSearch}`)
     },
@@ -261,8 +253,7 @@ export default {
     fileSelect(){
       this.profileSubmit = true;
 
-      console.log(this.$refs)
-      this.userProfile = this.$refs.userProfile.files[0];
+      this.newUserProfile = this.$refs.newUserProfile.files[0];
 
       var reader = new FileReader();
 
@@ -270,14 +261,14 @@ export default {
         this.profileImage = e.target.result;
       }
 
-      console.log(this.userProfile)
+     
 
-      reader.readAsDataURL(this.userProfile);
+      reader.readAsDataURL(this.newUserProfile);
     },
 
 
     removeFile(){
-      this.userProfile = ''
+      this.newUserProfile = ''
       this.profileImage = ''
     },
 
@@ -289,11 +280,12 @@ export default {
       frm.set('token',localStorage.getItem('token'))
 
 
-      if(this.userProfile){
-        frm.set('profile',this.userProfile)
-      }else if(this.profileImage){
-        frm.set('profileName',this.profileImage)
+      if(this.newUserProfile){
+        frm.set('profile',this.newUserProfile)   //파일
       }
+      // else if(this.profileImage){
+      //   frm.set('profileName',this.profileImage) //삭제 여부 결정
+      // }
       this.$axios({
         method:'patch',
         url:'/user/profile',
@@ -308,13 +300,14 @@ export default {
         this.removeFile();
         this.profileUpdateModal = false;
         this.profileSubmit = false;
-        console.log(response.data)
+
+        
         if(response.data.Auth=='FAIL'){
-          window.alert('로그인 해주십쇼')
+          window.alert('로그인이 필요합니다.')
           this.$store.commit('setIsLogin',false)
         }else{
           window.alert('프로필이 성공적으로 변경되었습니다.')
-          //this.getUserProfile();
+          
         }
       })
       .catch(err=>{
@@ -324,17 +317,14 @@ export default {
 
 
 
-    getUserProfile(){
-      var frm = new FormData();
-      frm.set('token',localStorage.getItem('token'))
-      this.$axios({
-        method:'post',
-        url: '/user/profileName',
-        data: frm
+    loadProfileImage(){
+     
+      this.$axios.post('/user/profile',{
+        token:localStorage.getItem('token')
       })
       .then(response=>{
         console.log(response)
-        if(response.data != ""){
+        if(response.data){
           this.profileImage = 'upload/' + response.data
         }
       })
@@ -345,7 +335,7 @@ export default {
 
 
     addFiles(){
-      this.$refs.userProfile.click();
+      this.$refs.newUserProfile.click();
     }
   },
   components:{

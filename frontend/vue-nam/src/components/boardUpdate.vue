@@ -40,7 +40,7 @@
                     <div class="uploadImage" v-for="(file, key) in boardImage" :key="key">
                         <div class="image-wrapper">
                             <div>
-                                <img style="width:90px;height:90px;margin:0 5px 0 0;" :src="image[key]">
+                                <img style="width:90px;height:90px;margin:0 5px 0 0;" :src="showImage[key]">
                             </div>
                             <div class="image-delete-box">
                                 <i class="fas fa-times" v-on:click="removeFile( key )" style="background-color:black;color:white;"></i>
@@ -91,7 +91,7 @@ export default {
                 files:[]
             },
             boardImage: [],
-            image:[]
+            showImage:[]
 
         }
     },
@@ -110,10 +110,12 @@ export default {
                this.board = response.data
                this.content = this.board.boardContent;
                this.grade = this.board.grade;
+
                this.board.files.forEach(fileName=> {
-                this.boardImage.push(fileName)
-                this.image.push('upload/' + fileName)
+                    this.boardImage.push(fileName)
+                    this.showImage.push('upload/' + fileName)
                })
+
                 console.log(this.boardImage)
 
                //upload/    substring(9)
@@ -134,12 +136,12 @@ export default {
             
             this.boardImage.forEach(file=>{
                 
-                if(file.lastModified) {
-                    console.log('files')
+                if(typeof file === 'object') {
+                    
                     frm.append('files',file)
                 }
                 else {
-                    console.log('origin')
+                    
                     frm.append('fileNames',file)
                 }
             })
@@ -177,19 +179,18 @@ export default {
                 var reader = new FileReader();
               
                 reader.onload = (e) =>{
-                    this.image.push(e.target.result);
-                    console.log(this.image);
+                    this.showImage.push(e.target.result);
+                   
                     
                 };
                 reader.readAsDataURL(uploadedFiles[i]);
             }
 
-            console.log(this.boardImage);
-            console.log(this.boardImage.length);
+           
         },
         removeFile(key){
             this.boardImage.splice(key,1);
-            this.image.splice(key,1)
+            this.showImage.splice(key,1)
         },
         addFiles(){
             this.$refs.boardImage.click();
