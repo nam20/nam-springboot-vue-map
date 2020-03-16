@@ -101,7 +101,7 @@ export default {
 								break;
 							case 'SOSO': board.grade = '평범하다'
 								break;
-							case 'BAD': board.grade = '별로...'
+							case 'BAD': board.grade = '맛없다!!!'
 								break;
 							default:
 								break;

@@ -2,10 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/components/index'
 
-
-import kakaomap from '@/components/kakaomap'
-import kakaomap2 from '@/components/kakaomap2'
-import kakaomap3 from '@/components/kakaomap3'
+import kakaomap from '@/components/kakaomap3'
 import axios from 'axios';
 import {store} from '../store/store'
 
@@ -33,24 +30,13 @@ const router = new Router({
     },
     {
       path: '/map',
-      component: kakaomap,
-      props:true
-    },
-    {
-      path: '/map2',
-      component: kakaomap2
-     
-    }
-    ,
-    {
-      path: '/map3',
-      component: kakaomap3
+      component: kakaomap
       // meta: {authRequired:true}
      
     },
     {
-      path: '/map3/:search',
-      component: kakaomap3,
+      path: '/map/:search',
+      component: kakaomap,
       props:true
     }
     ,
@@ -64,10 +50,7 @@ const router = new Router({
       path: '/allBoard',
       component: () => import('@/components/allBoard.vue')
     },
-    {
-      path: '/kakaomap4',
-      component: () => import('@/components/kakaomap4')
-    },
+    
     {
       path: '/boardReview/:boardId',
       component: () => import('@/components/boardReview'),
@@ -78,6 +61,11 @@ const router = new Router({
       path: '/boardUpdate/:boardId',
       component: () => import('@/components/boardUpdate'),
       props: true
+    },
+    {
+      path:'/userBoard/:userId',
+      component: ()=>import('@/components/userBoard'),
+      props:true
     }
   ]
 })

@@ -1,5 +1,5 @@
 <template>
-    <article >
+    <article style="box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -7px rgba(0,0,0,0.2);">
         <span class="image">
             <img v-if="board.files.length" :src="`upload/${board.files[0]}`" alt=""/>
             <img v-else src="upload/defaultImage.jpg" alt="" />

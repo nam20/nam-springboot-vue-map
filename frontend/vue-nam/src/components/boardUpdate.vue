@@ -29,11 +29,11 @@
                         <button :class="{active : grade == 'SOSO'}" @click="grade = 'SOSO'">평범하다!</button>
                     </li>
                     <li>
-                        <button :class="{active : grade == 'BAD'}" @click="grade = 'BAD'">별로!</button>
+                        <button :class="{active : grade == 'BAD'}" @click="grade = 'BAD'">맛없다!!!</button>
                     </li>
                 </ul>
 
-                 <textarea name="" id="" cols="30" rows="10" v-model="content" :placeholder="`${board.user.userName}님 솔직한 리뷰를 남겨주세요.`"></textarea>
+                 <textarea name="" id="" cols="30" rows="10" v-model="content" :placeholder="`${me.userName}님 솔직한 리뷰를 남겨주세요.`"></textarea>
              </div>
 
               <div class="fileSelect" >
@@ -95,7 +95,15 @@ export default {
 
         }
     },
-    mounted(){
+    computed:{
+        me(){
+            return this.$store.state.me
+        }
+    },
+    created(){
+
+       this.$store.dispatch('loadUser')
+
 
        this.$axios({
            method: 'get',

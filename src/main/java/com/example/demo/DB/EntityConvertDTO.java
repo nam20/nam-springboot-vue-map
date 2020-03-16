@@ -18,11 +18,14 @@ public class EntityConvertDTO {
         return  UserDTO.builder()
                 .id(user.getId())
                 .userName(user.getUserName())
-                .token(user.getToken())
+//                .token(user.getToken())
                 .userProfile(user.getUserProfile())
 
                 .build();
     }
+
+
+
 
     public CommentDTO commentDTOBuilder(Comment comment, UserDTO userDTO){
         return CommentDTO.builder()
@@ -63,6 +66,7 @@ public class EntityConvertDTO {
                 .placeName((board.getPlaceName()))
                 .grade(board.getGrade())
                 .user(userDTO)
+
                 .build();
     }
 

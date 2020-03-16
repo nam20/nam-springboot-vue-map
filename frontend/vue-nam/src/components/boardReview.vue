@@ -11,7 +11,7 @@
 						</header>
 
 	
-					<div id="main">
+					<div id="main" v-if="board">
 						
 							
 						
@@ -20,7 +20,9 @@
 									<div style="float:left;">
 										<img v-if="!!board.user.userProfile" :src="'upload/'+ board.user.userProfile"  alt="" class="boardProfile">
 										<img v-else src="upload/default.png" alt="" class="boardProfile">
-										<h2 style="display:inline;vertical-align:top;letter-spacing:2px;">{{board.user.userName}}</h2>
+										<!-- <h2 style="display:inline;vertical-align:top;letter-spacing:2px;">{{board.user.userName}}</h2> -->
+										<router-link :to="`/userBoard/${board.user.userName}`" style="display:inline;vertical-align:top;letter-spacing:2px;">{{board.user.userName}}</router-link>
+										
 										<h6 style="margin-top:10px;letter-spacing:1px;">{{board.placeName}}</h6>
 									</div>
 
@@ -44,8 +46,8 @@
 						<div class="inner">
 							<section>
 
-								<div v-if="board.comments.length" class="commentsList" >
-									<div v-for="comment in board.comments" :key="comment" class="comment" >
+								<div v-if="comments" class="commentsList" >
+									<div v-for="comment in comments" :key="comment" class="comment" >
 
 										<div style="float:left;margin:10px 0 0 10px;">
 											<img v-if="comment.user.userProfile" :src="'upload/' + comment.user.userProfile" class="commentImage" alt="" >
@@ -61,15 +63,16 @@
 
 								</div>
 								
-								<textarea v-model="comment" v-on:keyup.enter="commentWrite" name="" id="" cols="30" rows="10" style="border-top-color:#E9E9E9;"></textarea>
+								<!-- <textarea v-model="comment" v-on:keyup.enter="commentWrite" name="" id="" cols="30" rows="10" style="border-top-color:#E9E9E9;"></textarea> -->
+								<input v-if="me" type="text" v-model="commentContent" v-on:keyup.enter="commentWrite" style="border-top-color:#E9E9E9;width: 50%;">
 								
 								<div style="margin-bottom:30px;">
 									<button @click="$router.go(-1)" >돌아가기</button>
-									<button v-bind:disabled="! $store.state.isLogin" @click="commentWrite">댓글등록</button>
+									<button v-bind:disabled="! me || !commentContent" @click="commentWrite">댓글등록</button>
 
 									
 
-									<div v-if="isWriter">
+									<div v-if="me.id === board.user.id">
 										<button @click="$router.push(`/boardUpdate/${boardId}`)">수정하기</button>
 										<button @click="deleteBoard">삭제하기</button>
 									</div>
@@ -122,39 +125,38 @@ export default {
 	},
 	data(){
 		return {
-			board: {
-				user: {},
-				comments : [],
-				createdTime: '',
-				lastModifiedTime: '',
-				files:[]
-			},
-			comment: '',
+			board: '',
+
+			comments:[],
+
+			commentContent: '',
 			commentInterval:'',
-			isWriter: false,
+			// isWriter: false,
 			carouselArr:[],
 			carouselModal: false
 
 		}
 	}
 	,
-	props: ['boardId']
-	,created(){
+	props: ['boardId'],
+	computed:{
+		me(){
+			return this.$store.state.me
+		}
+	},
+	created(){
+		this.$store.dispatch('loadUser')
+		
 		this.loadBoards();
+		this.loadComments();	
 
 		this.commentInterval = setInterval(()=>{
-				this.$axios({
-					method:'get',
-					url: `/comments/${this.boardId}`
-				})
-				.then(response=>{
-					console.log(response.data);
-					
-					this.board.comments = response.data;
-					
-				})
-			}, 3000)
-
+			this.loadComments();
+				
+		 }, 3000)
+		
+	},
+	mounted(){
 		
 	},
 	beforeDestroy(){
@@ -162,48 +164,65 @@ export default {
 	},
 	methods:{
 		loadBoards(){
-			this.$axios({
-			method: 'get',
-			url: `/board/${this.boardId}`
-		})
-		.then(response=>{
-			
-			
-			this.board = response.data;
-
-			
-				switch(this.board.grade){
-					case 'GOOD': this.board.grade = '맛있다!'
-						break;
-					case 'SOSO': this.board.grade = '평범하다'
-						break;
-					case 'BAD': this.board.grade = '별로...'
-						break;
-					default:
-						break;
-				}
-				
-			
-			// this.board.createdTime = this.board.createdTime.substring(0,10);
-			// this.board.lastModifiedTime = this.board.lastModifiedTime.substring(0,10);
-		
-			
-			this.board.files.forEach(file=>{
-				this.carouselArr.push(`<div class="example-slide"><img src="upload/${file}" style="width:600px;height:600px;" alt=""></div>`)
+				this.$axios({
+				method: 'get',
+				url: `/board/${this.boardId}`
 			})
-			console.log(this.carouselArr)
-			
-			
+			.then(response=>{
 
-			if(this.board.user.token === localStorage.getItem('token')) this.isWriter = true
+				console.log(response)
+				
+				
+				this.board = response.data;
 
-			//this.getContent(this.comments);	
+				
+					switch(this.board.grade){
+						case 'GOOD': this.board.grade = '맛있다!'
+							break;
+						case 'SOSO': this.board.grade = '평범하다'
+							break;
+						case 'BAD': this.board.grade = '맛없다!!!'
+							break;
+						default:
+							break;
+					}
+					
+				
+				// this.board.createdTime = this.board.createdTime.substring(0,10);
+				// this.board.lastModifiedTime = this.board.lastModifiedTime.substring(0,10);
 			
-			
-		})
-		.catch(err=>{
-			console.log(err);
-		})
+				
+				this.board.files.forEach(file=>{
+					this.carouselArr.push(`<div class="example-slide"><img src="upload/${file}" style="width:600px;height:600px;" alt=""></div>`)
+				})
+				console.log(this.carouselArr)
+				
+				
+
+				//if(this.board.user.token === localStorage.getItem('token')) this.isWriter = true
+
+				//this.getContent(this.comments);	
+				
+				
+			})
+			.catch(err=>{
+				console.log(err);
+			})
+		},
+		loadComments(){
+			this.$axios({
+					method:'get',
+					url: `/comments/${this.boardId}`
+				})
+				.then(response=>{
+					console.log(response.data);
+					
+					this.comments = response.data;
+					
+				})
+				.catch(err=>{
+					console.error(err)
+				})
 		},
 		commentWrite(){
 
@@ -219,7 +238,7 @@ export default {
 				method: 'post',
 				url: `/comment`,
 				data: {
-					comment:this.comment,
+					comment:this.commentContent,
 					token:localStorage.getItem('token'),
 					boardId:this.boardId
 				},
@@ -232,7 +251,7 @@ export default {
 					window.alert('로그인이 필요합니다')
 				}
 
-				this.comment = ''
+				this.commentContent = ''
 			})
 			.catch(err=>{
 				console.log(err);

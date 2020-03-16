@@ -20,14 +20,18 @@ public class UserService {
 
 
 
-    @Autowired
-    private  EntityConvertDTO entityConvertDTO;
+    private final EntityConvertDTO entityConvertDTO;
+
+    private final UserRepository userRepository;
+
+    private final JwtUtil jwtUtil;
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private JwtUtil jwtUtil;
+    public UserService(EntityConvertDTO entityConvertDTO,UserRepository userRepository, JwtUtil jwtUtil){
+        this.entityConvertDTO = entityConvertDTO;
+        this.userRepository = userRepository;
+        this.jwtUtil = jwtUtil;
+    }
 
     public String register(String userName, String userPassword){
         if(userRepository.findByUserName(userName).isPresent()) return "중복된 아이디입니다."; //throw new IllegalArgumentException("중복된 유저");
@@ -104,7 +108,7 @@ public class UserService {
     }
 
     public UserDTO findUserByToken(String token){
-        return userRepository.findByToken(token).map(user -> entityConvertDTO.userDTOBulider(user)).orElse(null);
+        return userRepository.findByToken(token).map(entityConvertDTO::userDTOBulider).orElse(null);
     }
 
 

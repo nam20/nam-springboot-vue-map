@@ -13,14 +13,24 @@ import java.util.Map;
 @RestController
 public class UserController {
 
-    @Autowired
-    UserService userService;
+
+    private final UserService userService;
+
+
+    private final UserRepository userRepository;
+
+
+    private final EntityConvertDTO entityConvertDTO;
 
     @Autowired
-    UserRepository userRepository;
+    public UserController(UserService userService,UserRepository userRepository,EntityConvertDTO entityConvertDTO){
+        this.userService = userService;
+        this.userRepository = userRepository;
+        this.entityConvertDTO = entityConvertDTO;
+    }
 
-    @Autowired
-    EntityConvertDTO entityConvertDTO;
+
+
 
     @PostMapping("/auth")
     public void auth(){}

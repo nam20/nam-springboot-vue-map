@@ -1,5 +1,5 @@
 <template>
-  <!DOCTYPE HTML>
+  
 <!--
 	Phantom by HTML5 UP
 	html5up.net | @ajlkn
@@ -7,7 +7,7 @@
 -->
 
 	
-<body class="is-preload" style="margin-top:200px;">
+	<body class="is-preload" style="margin-top:200px;">
 	
 
 		<!-- <home-header></home-header> -->
@@ -15,10 +15,10 @@
 		<!-- Wrapper -->
 			<div id="wrapper">
 					<header>
-  		<h1 style="cursor:pointer;margin:0;" @click="$router.push('/')">HeeJun</h1>
+  						<h1 style="cursor:pointer;margin:0;" @click="$router.push('/')">HeeJun</h1>
 
   
-   </header>
+   					</header>
 				<!-- Header -->
 					
 
@@ -77,7 +77,7 @@
 
 		<!-- Scripts -->
 			
-</body>
+	</body>
 
 </template>
 
@@ -116,7 +116,7 @@ export default {
 				
             this.$axios({
 				method: 'get',
-				url: `/boards/${this.placeId}/${this.page}/${this.pageSize}`
+				url: `/boards/place/${this.placeId}/${this.page}/${this.pageSize}`
 			})
             .then(res =>{
 				console.log(res.data);
@@ -135,9 +135,9 @@ export default {
 						switch(board.grade){
 							case 'GOOD': board.grade = '맛있다!'
 								break;
-							case 'SOSO': board.grade = '평범하다'
+							case 'SOSO': board.grade = '평범하다..'
 								break;
-							case 'BAD': board.grade = '별로...'
+							case 'BAD': board.grade = '맛없다!!!'
 								break;
 							default:
 								break;

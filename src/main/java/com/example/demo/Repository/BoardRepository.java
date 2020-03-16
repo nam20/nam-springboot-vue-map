@@ -2,6 +2,7 @@ package com.example.demo.Repository;
 
 import com.example.demo.DB.Entity.Board;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -29,6 +30,10 @@ public interface BoardRepository  extends JpaRepository<Board,Long> {
     Page<Board> findByPlaceIdAndBoardAvailable(String placeId, Boolean boardAvailable , Pageable pageable);
 
     Page<Board> findByBoardAvailable(Boolean boardAvailable, Pageable pageable);
+
+    Page<Board> findByUserUserNameAndBoardAvailable(String userName,  Boolean boardAvailable , Pageable pageable);
+
+
 
 
 

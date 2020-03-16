@@ -29,11 +29,11 @@
                             <button :class="{active : grade === 'SOSO'}" @click="grade = 'SOSO'">평범하다!</button>
                         </li>
                         <li>
-                            <button :class="{active : grade === 'BAD'}" @click="grade = 'BAD'">별로!</button>
+                            <button :class="{active : grade === 'BAD'}" @click="grade = 'BAD'">맛없다!!!</button>
                         </li>
                     </ul>
                 
-                    <textarea name="" id="" cols="30" rows="10" v-model="content" :placeholder="`${this.user.userName}님 솔직한 리뷰를 남겨주세요.`"></textarea>
+                    <textarea name="" id="" cols="30" rows="10" v-model="content" :placeholder="`${me.userName}님 솔직한 리뷰를 남겨주세요.`"></textarea>
                 </div>
                 
                     
@@ -91,26 +91,21 @@ export default {
             content: '',
             
             grade : 'GOOD',
-            token : localStorage.getItem('token'),
-            user: {},
+           
+            // user: {},
             boardImage : [],
             image:[]
 
         }
     },
+    computed:{
+        me(){
+            return this.$store.state.me
+        }
+    },
     created(){ 
 
-       this.$axios({
-           method: 'get',
-           url: `/user/${this.token}`
-       })     
-       .then(response=>{
-          
-           
-           if(response.data){
-               this.user = response.data
-           }
-       })
+       this.$store.dispatch('loadUser')
 
     },
 

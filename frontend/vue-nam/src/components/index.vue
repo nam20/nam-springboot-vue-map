@@ -30,6 +30,7 @@
             <button  @click="registerModal = true">회원가입 </button>
             <button  @click="loginModal = true">로그인</button>
           </div>
+          <button @click="$router.push('/allBoard')">모든 리뷰 보러가기</button>
         
           
         </div>
@@ -38,7 +39,7 @@
    
 
     
-    <router-link to="/map3">지도</router-link><br>
+    <router-link to="/map">지도</router-link><br>
 
     <!-- <li v-for="item in this.$store.state.items[0]" v-bind:key="item" >
       <p style="width:700px;margin:30px auto;">{{item.title}} <br>  <a style="max-width:700px;" :href="item.link">{{item.link}}</a> <br> {{item.description}}</p> 
@@ -243,7 +244,7 @@ export default {
     },
    
     kakaoMap(){
-      this.$router.push(`map3/${this.kakaoMapSearch}`)
+      this.$router.push(`map/${this.kakaoMapSearch}`)
     },
 
 

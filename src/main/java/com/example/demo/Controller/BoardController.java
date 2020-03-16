@@ -1,12 +1,10 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Repository.BoardRepository;
-import com.example.demo.Repository.CommentRepository;
 import com.example.demo.DB.*;
 import com.example.demo.DB.DTO.BoardDTO;
-import com.example.demo.DB.DTO.CommentDTO;
+import com.example.demo.DB.Entity.Board;
+import com.example.demo.Repository.BoardRepository;
 import com.example.demo.Service.BoardService;
-import com.example.demo.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,20 +24,16 @@ public class BoardController {
 
 
 
+
+    private final BoardService boardService;
+
+    private final BoardRepository boardRepository;
+
     @Autowired
-    private BoardService boardService;
-
-
-
-
-
-
-
-
-
-
-
-
+    public BoardController(BoardService boardService, BoardRepository boardRepository) {
+        this.boardService = boardService;
+        this.boardRepository = boardRepository;
+    }
 
 
     @PostMapping(value = "/board", consumes = "multipart/form-data")
@@ -106,11 +100,16 @@ public class BoardController {
 
 
 
-    @GetMapping(value="/boards/{placeId}/{page}/{size}")
+    @GetMapping(value="/boards/place/{placeId}/{page}/{size}")
     public Map<String,Object> placeBoardView(@PathVariable("placeId") String placeId,@PathVariable("page") int page,@PathVariable("size") int size){
 
-        return boardService.boardReviewByPlaceId(placeId, page, size);
+        return boardService.boardByPlaceId(placeId, page, size);
 
+    }
+
+    @GetMapping("/boards/user/{userName}/{page}/{size}")
+    public Map<String,Object> userIdBoard(@PathVariable("userName") String userName,@PathVariable("page") int page,@PathVariable("size") int size){
+        return boardService.boardByUserId(userName,page,size);
     }
 
     @GetMapping("/boardCount/gradeAvg/{placeId}")
@@ -122,6 +121,8 @@ public class BoardController {
 
 
 
+
+
     @GetMapping("/board/{boardId}")   // 보드 id값으로 단 한개 가져오기
     public BoardDTO boardFindById(@PathVariable("boardId") Long boardId){
 
@@ -129,18 +130,7 @@ public class BoardController {
 
     }
 
-    @GetMapping("/comments/{boardId}")
-    public List<CommentDTO> getComments(@PathVariable("boardId") Long boardId){
 
-        return boardService.getComments(boardId);
-    }
-
-    @PostMapping("/comment")
-    public void commentWrite(/*@RequestParam("comment") String commentContent, @RequestParam("token") String token, @RequestParam("boardId") String boardId,*/@RequestBody Map<String,String> payload){
-
-        boardService.commentWrite(payload.get("comment"), payload.get("token"), payload.get("boardId"));
-
-    }
 
     @PatchMapping("/board")
     public void boardUpdate(@RequestParam("grade") Grade grade,@RequestParam("content") String content, @RequestParam("boardId") Long boardId

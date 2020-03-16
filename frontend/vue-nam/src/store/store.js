@@ -17,14 +17,27 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   
     state:{
-        isLogin: false
+        isLogin: false,
+        me:''
     },
     mutations:{
           setIsLogin(state, payload){
               state.isLogin = payload;
+          },
+          setMe(state,payload){
+              state.me = payload;
           }
     },
     actions:{
+        loadUser({commit}){
+            axios.get(`/user/${localStorage.getItem('token')}`)
+            .then(res=>{
+                commit('setMe',res.data)
+            })
+            .catch(err=>{
+                console.error(err)
+            })
+        }
         
     }
         
