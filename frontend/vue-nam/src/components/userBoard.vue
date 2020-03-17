@@ -1,16 +1,13 @@
 <template>
-  <body class="is-preload" style="margin-top:200px;">
+
+  <div style="margin-top:200px;">
 	
 
 		<!-- <home-header></home-header> -->
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-					<header>
-  						<h1 style="cursor:pointer;margin:0;" @click="$router.push('/')">HeeJun</h1>
-
-  
-   					</header>
+				
 				<!-- Header -->
 					
 
@@ -26,7 +23,7 @@
 								리뷰 작성하기
 							
 							</button> -->
-                        <h1>{{boards[0].user.userName}}</h1>
+                        <h1>{{boards[0].user.userName}}님의 리뷰</h1>
 							
 						<div class="inner">
 							
@@ -70,7 +67,7 @@
 
 		<!-- Scripts -->
 			
-	</body>
+	</div>
 </template>
 
 <script>

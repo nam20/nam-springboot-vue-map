@@ -17,6 +17,7 @@ public class EntityConvertDTO {
 
         return  UserDTO.builder()
                 .id(user.getId())
+                .userId(user.getUserId())
                 .userName(user.getUserName())
 //                .token(user.getToken())
                 .userProfile(user.getUserProfile())

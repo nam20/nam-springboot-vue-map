@@ -1,9 +1,6 @@
 <template>
 <div>
-    <header>
-         <h1 style="cursor:pointer;margin:0;" @click="$router.push('/')">HeeJun</h1>
-      
-    </header>
+    
      <div id="menu_wrap" class="bg_white">
             <div class="option">
                 <div>

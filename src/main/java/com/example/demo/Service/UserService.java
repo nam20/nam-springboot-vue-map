@@ -33,12 +33,14 @@ public class UserService {
         this.jwtUtil = jwtUtil;
     }
 
-    public String register(String userName, String userPassword){
-        if(userRepository.findByUserName(userName).isPresent()) return "중복된 아이디입니다."; //throw new IllegalArgumentException("중복된 유저");
-
+    public String register(String userId,String userName, String userPassword){
+        if(userRepository.findByUserId(userId).isPresent()) return "중복된 아이디입니다."; //throw new IllegalArgumentException("중복된 유저");
+        String salt = Sha256.generateSalt();
         User user = User.builder()
+                .userId(userId)
                 .userName(userName)
-                .userPassword(Sha256.encryptSHA256(userPassword))
+                .salt(salt)
+                .userPassword(Sha256.encryptSHA256(userPassword,salt))
                 .token(jwtUtil.createToken(userName))
                 .build();
 
@@ -51,15 +53,15 @@ public class UserService {
 
     }
 
-    public String login(String userName, String userPassword){
-        Optional<User> optionalUser = userRepository.findByUserName(userName);
+    public String login(String userId, String userPassword){
+        Optional<User> optionalUser = userRepository.findByUserId(userId);
         if(!optionalUser.isPresent()) return "없는 아이디입니다.";
         User user = optionalUser.get();
 
-        if(! user.getUserPassword().equals(Sha256.encryptSHA256(userPassword))) return "비밀번호가 틀렸습니다.";
+        if(! user.getUserPassword().equals(Sha256.encryptSHA256(userPassword,user.getSalt()))) return "비밀번호가 틀렸습니다.";
 
 
-            user.setToken(jwtUtil.createToken(userName));
+            user.setToken(jwtUtil.createToken(userId));
             userRepository.save(user);
 
         return user.getToken();

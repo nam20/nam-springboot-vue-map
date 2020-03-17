@@ -2,12 +2,12 @@
 
 
 	
-    <body style="margin-top:130px;">
-        <header>
+    <div style="margin-top:130px;">
+        <!-- <header>
             <h1 style="cursor:pointer;margin:0;" @click="$router.push('/')">HeeJun</h1>
 
     
-         </header>
+         </header> -->
         <section>
       
 
@@ -76,7 +76,7 @@
         
 
         </section>
-   </body>
+   </div>
 
 </template>
 
@@ -140,7 +140,7 @@ export default {
 
             })
             .then(res=>{
-                console.log(res);
+               
                 
                 if(res.data.Auth=='FAIL'){
                     window.alert('로그인이 필요합니다')

@@ -39,7 +39,7 @@ public class UserController {
     @PostMapping(value="/register")
     public String join(@RequestBody Map<String, String> payload){
 
-        return userService.register(payload.get("userName"),payload.get("userPassword"));
+        return userService.register(payload.get("userId"),payload.get("userName"),payload.get("userPassword"));
 
     }
 
@@ -51,7 +51,7 @@ public class UserController {
         System.out.println(payload);
 
         //return "";
-        return userService.login(payload.get("userName"),payload.get("userPassword"));
+        return userService.login(payload.get("userId"),payload.get("userPassword"));
     }
 
 

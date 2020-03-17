@@ -2,7 +2,13 @@
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
     
-    <router-view/>
+    
+      <header>
+        <h1 style="cursor:pointer;margin:0;" @click="$router.push('/')">HeeJun</h1>
+      </header>
+      <router-view/>
+   
+    
   </div>
 </template>
 
@@ -13,9 +19,9 @@ export default {
 }
 </script>
 
-<style >
+<style scoped>
 
-
+@import url('./assets/main.css');
 
 
 #app {

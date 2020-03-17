@@ -2,12 +2,12 @@
   <!DOCTYPE HTML>
 		
 		
-	<body class="is-preload" style="margin-top:200px;">
-		<header>
+	<div style="margin-top:200px;">
+		<!-- <header>
 		<h1 style="cursor:pointer;margin:0;" @click="$router.push('/')">HeeJun</h1>
 
 		
-		</header>
+		</header> -->
 		
 			<div id="wrapper">  
 
@@ -46,7 +46,7 @@
 
 			
 		
-	</body>
+	</div>
 	
 </template>
 
@@ -88,7 +88,7 @@ export default {
 				url: `/allBoard/${this.page}/${this.pageSize}`
 			})
             .then(res =>{
-				console.log(res.data)
+				
 				if(res.data){
 
 					const boardPaging = res.data

@@ -7,18 +7,14 @@
 -->
 
 	
-	<body class="is-preload" style="margin-top:200px;">
+	<div  style="margin-top:200px;">
 	
 
 		<!-- <home-header></home-header> -->
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-					<header>
-  						<h1 style="cursor:pointer;margin:0;" @click="$router.push('/')">HeeJun</h1>
-
-  
-   					</header>
+				
 				<!-- Header -->
 					
 
@@ -77,7 +73,7 @@
 
 		<!-- Scripts -->
 			
-	</body>
+	</div>
 
 </template>
 
@@ -119,7 +115,7 @@ export default {
 				url: `/boards/place/${this.placeId}/${this.page}/${this.pageSize}`
 			})
             .then(res =>{
-				console.log(res.data);
+				
 				
 				
 				
@@ -170,7 +166,7 @@ export default {
 				url: `/boardCount/gradeAvg/${this.placeId}`
 			})
 			.then(response=>{
-				console.log(response.data);
+				
 				
 				if(response.data.avg){
 					this.gradeAvg = response.data.avg.toFixed(1);

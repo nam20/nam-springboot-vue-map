@@ -10,6 +10,8 @@ public class UserDTO {
 
     private Long id;
 
+    private String userId;
+
     private String userName;
 
     private String userProfile;
@@ -18,9 +20,10 @@ public class UserDTO {
 
 
     @Builder
-    public UserDTO( Long id, String userName, String userProfile/*,String token*/){
+    public UserDTO( Long id, String userId, String userName, String userProfile/*,String token*/){
 
         this.id = id;
+        this.userId = userId;
         this.userName = userName;
 //        this.token = token;
         this.userProfile = userProfile;

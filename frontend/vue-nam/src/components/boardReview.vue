@@ -6,9 +6,9 @@
 	
 			<div style="background-color:#e6e6e6ea;">
 				
-						<header>
+						<!-- <header>
 							<h1 style="cursor:pointer;margin:0;" @click="$router.push('/')">HeeJun</h1>
-						</header>
+						</header> -->
 
 	
 					<div id="main" v-if="board">
@@ -21,9 +21,9 @@
 										<img v-if="!!board.user.userProfile" :src="'upload/'+ board.user.userProfile"  alt="" class="boardProfile">
 										<img v-else src="upload/default.png" alt="" class="boardProfile">
 										<!-- <h2 style="display:inline;vertical-align:top;letter-spacing:2px;">{{board.user.userName}}</h2> -->
-										<router-link :to="`/userBoard/${board.user.userName}`" style="display:inline;vertical-align:top;letter-spacing:2px;">{{board.user.userName}}</router-link>
-										
-										<h6 style="margin-top:10px;letter-spacing:1px;">{{board.placeName}}</h6>
+										<router-link :to="`/userBoard/${board.user.userName}`" style="vertical-align:top;letter-spacing:2px;font-size: x-large;">{{board.user.userName}}</router-link>
+										<router-link :to="`/map/${board.placeName}`" style="display:block;font-weight:bold">{{board.placeName}}</router-link>
+										<!-- <h6 style="margin-top:10px;letter-spacing:1px;">{{board.placeName}}</h6> -->
 									</div>
 
 									<div style="float:right;">
@@ -170,7 +170,7 @@ export default {
 			})
 			.then(response=>{
 
-				console.log(response)
+			
 				
 				
 				this.board = response.data;
@@ -188,14 +188,13 @@ export default {
 					}
 					
 				
-				// this.board.createdTime = this.board.createdTime.substring(0,10);
-				// this.board.lastModifiedTime = this.board.lastModifiedTime.substring(0,10);
+				
 			
 				
 				this.board.files.forEach(file=>{
 					this.carouselArr.push(`<div class="example-slide"><img src="upload/${file}" style="width:600px;height:600px;" alt=""></div>`)
 				})
-				console.log(this.carouselArr)
+				
 				
 				
 
@@ -215,7 +214,7 @@ export default {
 					url: `/comments/${this.boardId}`
 				})
 				.then(response=>{
-					console.log(response.data);
+				
 					
 					this.comments = response.data;
 					

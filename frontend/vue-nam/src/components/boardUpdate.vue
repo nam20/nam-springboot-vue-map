@@ -2,15 +2,15 @@
 
 
 
-    <body style="margin-top:130px;">
+    <div style="margin-top:130px;">
        
         <section>
-         <header>
+         <!-- <header>
             <h1 style="cursor:pointer;margin:0;" @click="$router.push('/')">HeeJun</h1>
 
         
-        </header>
-            <div class="container">
+        </header> -->
+            <div class="container" v-if="board">
                 <strong>{{board.placeName}}</strong>
                 
                     <span>
@@ -33,7 +33,7 @@
                     </li>
                 </ul>
 
-                 <textarea name="" id="" cols="30" rows="10" v-model="content" :placeholder="`${me.userName}님 솔직한 리뷰를 남겨주세요.`"></textarea>
+                 <textarea name="" id="" cols="30" rows="10" v-model="content" :placeholder="`${board.user.userName}님 솔직한 리뷰를 남겨주세요.`"></textarea>
              </div>
 
               <div class="fileSelect" >
@@ -70,7 +70,7 @@
         
 
         </section>
-   </body>
+   </div>
 
 </template>
  
@@ -85,11 +85,8 @@ export default {
             content: '',
             
             grade : '',
-            token : localStorage.getItem('token'),
-            board: {
-                user:{},
-                files:[]
-            },
+           
+            board: {},
             boardImage: [],
             showImage:[]
 
@@ -110,10 +107,10 @@ export default {
            url: `/board/${this.boardId}`
        })     
        .then(response=>{
-           console.log(response);
+         
            
            if(response.data){
-               console.log(response.data);
+              
                
                this.board = response.data
                this.content = this.board.boardContent;
@@ -124,8 +121,7 @@ export default {
                     this.showImage.push('upload/' + fileName)
                })
 
-                console.log(this.boardImage)
-
+                
                //upload/    substring(9)
             
            }

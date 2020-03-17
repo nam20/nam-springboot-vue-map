@@ -3,11 +3,7 @@
   <div class="hello">
     <!-- <h1>{{ msg }}</h1> -->
 
-    <header>
-      <h1 style="cursor:pointer;margin:0;">HeeJun</h1>
-
-  
-    </header>
+    
     
     <!-- <input type="text" v-model="tester" v-on:keyup.enter="naverSearch" placeholder="네이버 사전 검색" autocomplete="off">
     <span v-on:click="naverSearch">클릭</span> -->
@@ -27,8 +23,8 @@
           </div>
 
           <div v-else>
-            <button  @click="registerModal = true">회원가입 </button>
-            <button  @click="loginModal = true">로그인</button>
+            <button  @click="registerModalOpen = true">회원가입 </button>
+            <button  @click="loginModalOpen = true">로그인</button>
           </div>
           <button @click="$router.push('/allBoard')">모든 리뷰 보러가기</button>
         
@@ -39,38 +35,59 @@
    
 
     
-    <router-link to="/map">지도</router-link><br>
+  
 
     <!-- <li v-for="item in this.$store.state.items[0]" v-bind:key="item" >
       <p style="width:700px;margin:30px auto;">{{item.title}} <br>  <a style="max-width:700px;" :href="item.link">{{item.link}}</a> <br> {{item.description}}</p> 
      
     </li> -->
-    
-    <Modal v-if="registerModal || loginModal" @close="userClear()" >
-      <div slot="header">
-        <h3 class="modal-default-button"><i class="closeModalBtn fas fa-times fa-lg" @click="userClear()"></i></h3>
-       </div>
-        <div slot="body" class="loginForm">
-          <input  id="userName" type="text" v-model="userName" name="userName" placeholder="아이디" autocomplete="off" style="margin-top:50px;">
+
+    <Modal v-if="registerModalOpen" @close="userClear()">
+        <div slot="header">
+          <h3 class="modal-default-button"><i class="closeModalBtn fas fa-times fa-lg" @click="userClear()"></i></h3>
+        </div>
+        <div slot="body" class="loginJoinForm" >
+          <input  id="userId" type="text" v-model="userId" name="userId" placeholder="아이디" autocomplete="off" style="margin-top:50px;">
+
+          <input id="userName" v-model="userName" name="userName" placeholder="닉네임" autocomplete="off" type="text">
           
           <input  id="userPassword" type="text" v-model="userPassword" name="userPassword" placeholder="비밀번호" autocomplete="off">
 
-          <input  v-if="!!registerModal" id="userPasswordCheck" type="text" v-model="userPasswordCheck" name="userPasswordCheck" placeholder="비밀번호 확인" autocomplete="off">
-          <p v-show="!!registerModal && userPassword !== userPasswordCheck">비밀번호를 맞춰주십시오</p>
+          <input   id="userPasswordCheck" type="text" v-model="userPasswordCheck" name="userPasswordCheck" placeholder="비밀번호 확인" autocomplete="off">
+          <p v-show="userPassword !== userPasswordCheck">비밀번호를 맞춰주십시오</p>
         </div>
-        
-        
 
-        <div slot="footer" v-if="registerModal">
+         <div slot="footer">
 
-          <button :disabled="!userName || !userPassword || userPassword !== userPasswordCheck" type="button" @click="register">회원 가입</button>
+          <button :disabled="!userId || !userName || !userPassword || userPassword !== userPasswordCheck" type="button" @click="register">회원 가입</button>
 
         </div>
 
+        <p slot="footer" style="margin-top:20px;"> {{failResult}}</p>
 
-        <div slot="footer" v-if="loginModal">
+    </Modal>
+
+
+    
+    <Modal v-if="loginModalOpen" @close="userClear()" >
+
+        <div slot="header">
+
+          <h3 class="modal-default-button"><i class="closeModalBtn fas fa-times fa-lg" @click="userClear()"></i></h3>
+        </div>
+    
+
+        <div slot="body" class="loginJoinForm" >
+          <input  id="userId" type="text" v-model="userId" name="userId" placeholder="아이디" autocomplete="off" style="margin-top:50px;">
+          
+          <input  id="userPassword" type="text" v-model="userPassword" name="userPassword" placeholder="비밀번호" autocomplete="off">
+
+        </div>
+        
+        
+        <div slot="footer">
             
-          <button :disabled="!userName || !userPassword"  type="button" @click="login">로그인</button>
+          <button :disabled="!userId || !userPassword"  type="button" @click="login">로그인</button>
 
         </div>
 
@@ -78,6 +95,9 @@
         <p slot="footer" style="margin-top:20px;"> {{failResult}}</p>
         
     </Modal>
+
+
+    
 
 
 
@@ -120,12 +140,12 @@ export default {
       
       
       
-     
+      userId:'',
       userName: '',
       userPassword: '',
       userPasswordCheck:'',
-      registerModal: false,
-      loginModal: false,
+      registerModalOpen: false,
+      loginModalOpen: false,
       failResult: '',
       kakaoMapSearch:'',
 
@@ -156,6 +176,7 @@ export default {
        
      
        this.$axios.post('/register',{
+          userId:this.userId,
           userName:this.userName,
           userPassword:this.userPassword
         })
@@ -166,7 +187,7 @@ export default {
           if(response.data == '중복된 아이디입니다.'){
 
             this.failResult = response.data;
-            this.userName = ''
+            this.userId = ''
           
           } else {
             
@@ -185,17 +206,17 @@ export default {
           
         });
     },
-    // registerModalOpen(){
-    //   this.registerModal = true;
+    // registerModalOpenOpen(){
+    //   this.registerModalOpen = true;
     // },
-    // loginModalOpen(){
-    //   this.loginModal = true;
+    // loginModalOpenOpen(){
+    //   this.loginModalOpen = true;
     // },
     
     login(){
      
         this.$axios.post('/login',{
-          userName:this.userName,
+          userId:this.userId,
           userPassword:this.userPassword
         })
         .then((res)=>{
@@ -234,12 +255,13 @@ export default {
     ,
     
     userClear(){
+      this.userId = '';
       this.userName = '';
       this.userPassword = '';
       this.userPasswordCheck = '';
       
-      this.registerModal = false;
-      this.loginModal = false;
+      this.registerModalOpen = false;
+      this.loginModalOpen = false;
       this.failResult = '';
     },
    
@@ -384,7 +406,7 @@ header > h1{
   
 }
 
-div.loginForm > input{
+div.loginJoinForm > input{
   padding:0 0 0 5px;
   width:90%;
 }
