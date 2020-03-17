@@ -539,7 +539,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49940357" visible="true" weight="0.2421875" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49940357" weight="0.2421875" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39888534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
