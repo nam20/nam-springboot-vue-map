@@ -105,7 +105,7 @@ export default {
         loadBoards(){
             this.$axios({
 				method: 'get',
-				url: `/boards/user/${this.userId}/${this.page}/${this.pageSize}`
+				url: `/board/user/${this.userId}/${this.page}/${this.pageSize}`
 			})
             .then(res =>{
 				console.log(res.data);

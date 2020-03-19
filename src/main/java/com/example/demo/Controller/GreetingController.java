@@ -2,8 +2,6 @@ package com.example.demo.Controller;
 
 import com.example.demo.DB.Greeting;
 import org.springframework.hateoas.Link;
-import org.springframework.hateoas.server.mvc.ControllerLinkBuilder;
-import org.springframework.hateoas.server.mvc.ControllerLinkRelationProvider;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

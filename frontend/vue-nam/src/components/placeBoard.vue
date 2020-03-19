@@ -112,7 +112,7 @@ export default {
 				
             this.$axios({
 				method: 'get',
-				url: `/boards/place/${this.placeId}/${this.page}/${this.pageSize}`
+				url: `/board/place/${this.placeId}/${this.page}/${this.pageSize}`
 			})
             .then(res =>{
 				
@@ -163,7 +163,7 @@ export default {
 		boardGrade(){
 			this.$axios({
 				method: 'get',
-				url: `/boardCount/gradeAvg/${this.placeId}`
+				url: `/board/gradeAvg/${this.placeId}`
 			})
 			.then(response=>{
 				

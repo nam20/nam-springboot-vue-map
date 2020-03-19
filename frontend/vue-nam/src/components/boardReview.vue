@@ -72,7 +72,7 @@
 
 									
 
-									<div v-if="me.id === board.user.id">
+									<div v-if="links.delete">
 										<button @click="$router.push(`/boardUpdate/${boardId}`)">수정하기</button>
 										<button @click="deleteBoard">삭제하기</button>
 									</div>
@@ -133,7 +133,8 @@ export default {
 			commentInterval:'',
 			// isWriter: false,
 			carouselArr:[],
-			carouselModal: false
+			carouselModal: false,
+			links:{}
 
 		}
 	}
@@ -146,8 +147,13 @@ export default {
 	},
 	created(){
 		this.$store.dispatch('loadUser')
+		.then(()=>{
+			this.loadBoard();
+		})
 		
-		this.loadBoards();
+	
+		
+		
 		this.loadComments();	
 
 		this.commentInterval = setInterval(()=>{
@@ -163,14 +169,12 @@ export default {
 		clearInterval(this.commentInterval);
 	},
 	methods:{
-		loadBoards(){
-				this.$axios({
-				method: 'get',
-				url: `/board/${this.boardId}`
-			})
+		loadBoard(){
+			this.$axios.get(`/board/${this.boardId}/${this.me.id || 0}`)
 			.then(response=>{
-
-			
+				console.log(response)
+				
+				this.links = response.data._links
 				
 				
 				this.board = response.data;
@@ -187,20 +191,10 @@ export default {
 							break;
 					}
 					
-				
-				
-			
-				
+							
 				this.board.files.forEach(file=>{
 					this.carouselArr.push(`<div class="example-slide"><img src="upload/${file}" style="width:600px;height:600px;" alt=""></div>`)
 				})
-				
-				
-				
-
-				//if(this.board.user.token === localStorage.getItem('token')) this.isWriter = true
-
-				//this.getContent(this.comments);	
 				
 				
 			})
@@ -265,7 +259,7 @@ export default {
 			// 		Authorization : `Bearer ${localStorage.getItem('token')}`
 			// 	}
 			// })
-			this.$axios.patch(`/board/${this.boardId}`,{
+			this.$axios.patch(`${this.links.delete.href}`,{
 				headers:{
 					Authorization : `Bearer ${localStorage.getItem('token')}`
 				}

@@ -30,7 +30,7 @@ export const store = new Vuex.Store({
     },
     actions:{
         loadUser({commit}){
-            axios.get(`/user/${localStorage.getItem('token')}`)
+            return axios.get(`/user/${localStorage.getItem('token')}`)
             .then(res=>{
                 commit('setMe',res.data)
             })

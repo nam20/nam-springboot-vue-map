@@ -1,9 +1,11 @@
 package com.example.demo.DB.DTO;
 
 import com.example.demo.DB.Grade;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.hateoas.RepresentationModel;
 import org.springframework.util.Assert;
 
 import java.time.LocalDateTime;
@@ -13,7 +15,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class BoardDTO {
+public class BoardDTO extends RepresentationModel<BoardDTO> {
 
 
 
@@ -46,7 +48,7 @@ public class BoardDTO {
 
     private LocalDateTime lastModifiedTime;
 
-    @Builder
+    @Builder @JsonCreator
     public BoardDTO(Long id, String boardContent, Grade grade, String placeId, String placeName,
                     Boolean boardAvailable, UserDTO user, List<String> files, List<CommentDTO> comments, LocalDateTime createdTime, LocalDateTime lastModifiedTime){
 

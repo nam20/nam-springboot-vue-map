@@ -21,7 +21,7 @@ public interface BoardRepository  extends JpaRepository<Board,Long> {
 
     Page<Board> findByPlaceId(String place, Pageable pageable);
 
-    @Query(value = "select avg(b.grade) avg,count(*) count from board b where b.place_id = ?1 and b.board_available = true",nativeQuery = true)
+    @Query(value = "select avg(b.grade) avg from board b where b.place_id = ?1 and b.board_available = true",nativeQuery = true)
     Optional<Map<String,Double>> boardAvgGrade(String placeId);
 
     @Query(value = "select count(*) from board b where b.board_available = true", nativeQuery = true)

@@ -85,7 +85,7 @@ export default {
 				
             this.$axios({
 				method: 'get',
-				url: `/allBoard/${this.page}/${this.pageSize}`
+				url: `/board/all/${this.page}/${this.pageSize}`
 			})
             .then(res =>{
 				
