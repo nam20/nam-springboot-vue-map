@@ -26,7 +26,7 @@
             <button  @click="registerModalOpen = true">회원가입 </button>
             <button  @click="loginModalOpen = true">로그인</button>
           </div>
-          <button @click="$router.push('/allBoard')">모든 리뷰 보러가기</button>
+          <button @click="$router.push('/board')">모든 리뷰 보러가기</button>
         
           
         </div>
@@ -162,20 +162,20 @@ export default {
   },
   created(){
       //this.getnewUserProfile();
+      this.$store.dispatch('loadUser')
   },
   methods:{
  
     
-    naverSearch(){
-      this.$store.commit('naverSearch',this.tester);
-    }
-    ,
+    // naverSearch(){
+    //   this.$store.commit('naverSearch',this.tester);
+    // },
    
     register(){
      
        
      
-       this.$axios.post('/register',{
+       this.$axios.post('/user/register',{
           userId:this.userId,
           userName:this.userName,
           userPassword:this.userPassword
@@ -215,7 +215,7 @@ export default {
     
     login(){
      
-        this.$axios.post('/login',{
+        this.$axios.post('/user/login',{
           userId:this.userId,
           userPassword:this.userPassword
         })

@@ -259,7 +259,7 @@ export default {
 			// 		Authorization : `Bearer ${localStorage.getItem('token')}`
 			// 	}
 			// })
-			this.$axios.patch(`${this.links.delete.href}`,{
+			this.$axios.delete(`${this.links.delete.href}`,{
 				headers:{
 					Authorization : `Bearer ${localStorage.getItem('token')}`
 				}

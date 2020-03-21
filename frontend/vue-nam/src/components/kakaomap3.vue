@@ -12,7 +12,7 @@
             </div>
             <hr>
             <div style="height:60px;margin:10px 0;">
-                <button class="button" @click="$router.push('/allBoard')" style="height:inherit;font-size:1.3em;padding:0 15px;"> 모든 리뷰 보러가기 </button>
+                <button class="button" @click="$router.push('/board')" style="height:inherit;font-size:1.3em;padding:0 15px;"> 모든 리뷰 보러가기 </button>
                 <!-- <router-link to="/allBoard">모든 리뷰 보러가기</router-link> -->
             </div>
             <ul id="placesList"></ul>

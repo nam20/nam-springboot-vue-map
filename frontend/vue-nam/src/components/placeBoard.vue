@@ -90,7 +90,7 @@ export default {
 			searchResult : '',
 			page: 0,
 			totalPages: 0,
-			pageSize : 9,
+			limit : 9,
 			hasNextPage: true
         }
     },
@@ -112,7 +112,11 @@ export default {
 				
             this.$axios({
 				method: 'get',
-				url: `/board/place/${this.placeId}/${this.page}/${this.pageSize}`
+				url: `/board/place/${this.placeId}`,
+				params:{
+					page:this.page,
+					limit:this.limit
+				}
 			})
             .then(res =>{
 				
@@ -182,7 +186,7 @@ export default {
 			})
 		},
 		slice(){
-			this.boards = this.boards.slice(0,this.pageSize);
+			this.boards = this.boards.slice(0,this.limit);
 			this.page = 1;
 			this.hasNextPage = true;
 		}

@@ -33,7 +33,7 @@
                     </li>
                 </ul>
 
-                 <textarea name="" id="" cols="30" rows="10" v-model="content" :placeholder="`${board.user.userName}님 솔직한 리뷰를 남겨주세요.`"></textarea>
+                 <textarea name="" id="" cols="30" rows="10" v-model="content" :placeholder="`${me.userName}님 솔직한 리뷰를 남겨주세요.`"></textarea>
              </div>
 
               <div class="fileSelect" >
@@ -88,7 +88,8 @@ export default {
            
             board: {},
             boardImage: [],
-            showImage:[]
+            showImage:[],
+            link:{}
 
         }
     },
@@ -100,32 +101,12 @@ export default {
     created(){
 
        this.$store.dispatch('loadUser')
-
-
-       this.$axios({
-           method: 'get',
-           url: `/board/${this.boardId}`
-       })     
-       .then(response=>{
-         
-           
-           if(response.data){
-              
-               
-               this.board = response.data
-               this.content = this.board.boardContent;
-               this.grade = this.board.grade;
-
-               this.board.files.forEach(fileName=> {
-                    this.boardImage.push(fileName)
-                    this.showImage.push('upload/' + fileName)
-               })
-
-                
-               //upload/    substring(9)
-            
-           }
+       .then(()=>{
+           this.loadBoard()
        })
+
+
+       
 
     },
 
@@ -136,7 +117,7 @@ export default {
 
             frm.set('grade',this.grade)
             frm.set('content',this.content)
-            frm.set('boardId',this.boardId)
+            // frm.set('boardId',this.boardId)
             
             this.boardImage.forEach(file=>{
                 
@@ -153,7 +134,7 @@ export default {
 
             this.$axios({
                 method: 'patch',
-                url: '/board',
+                url: `${this.link.update.href}`,
                 data: frm,
 				headers:{
 					Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -172,6 +153,33 @@ export default {
             .catch(err=>{
                 console.log(err);
                 
+            })
+        },
+        loadBoard(){
+            this.$axios({
+            method: 'get',
+            url: `/board/${this.boardId}/${this.me.id}`
+            })     
+            .then(response=>{
+                
+                
+                if(response.data){
+
+                    this.link = response.data._links
+                    
+                    this.board = response.data
+                    this.content = this.board.boardContent;
+                    this.grade = this.board.grade;
+
+                    this.board.files.forEach(fileName=> {
+                            this.boardImage.push(fileName)
+                            this.showImage.push('upload/' + fileName)
+                    })
+
+                        
+                    
+                    
+                }
             })
         },
         fileSelect(){

@@ -47,7 +47,7 @@ const router = new Router({
       meta: {authRequired:true}
     },
     {
-      path: '/allBoard',
+      path: '/board',
       component: () => import('@/components/allBoard.vue')
     },
     
@@ -60,7 +60,8 @@ const router = new Router({
     {
       path: '/boardUpdate/:boardId',
       component: () => import('@/components/boardUpdate'),
-      props: true
+      props: true,
+      meta: {authRequired:true}
     },
     {
       path:'/userBoard/:userId',
@@ -80,9 +81,10 @@ router.beforeEach((to,from,next) => {
   if(localStorage.getItem('token')){  //토큰 여부
       axios({
         method: 'post',
-        url: '/auth'
+        url: '/user/auth'
       })
       .then(response=>{
+       
 
         if(to.matched.some((routeInfo) => {
           return routeInfo.meta.authRequired;   //인증 필요 여부
@@ -94,7 +96,7 @@ router.beforeEach((to,from,next) => {
                 next();
 
               } else {   //토큰 변조, 만료
-
+                
                 window.alert('로그인이 필요합니다.'); 
                 store.commit('setIsLogin',false);  
                 localStorage.clear();

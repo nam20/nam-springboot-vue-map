@@ -49,75 +49,26 @@ public class BoardController {
 
     }
 
-    @GetMapping("/all/{page}/{size}")
-    public Map<String,Object> allBoard(@PathVariable("page") int page,@PathVariable("size") int size){
+    @GetMapping("")
+    public Map<String,Object> allBoard(@RequestParam("page") int page,@RequestParam("limit") int limit){
 
-       return boardService.allBoard(page,size);
-
-    }
-
-
-
-
-
-
-
-
-//    @RequestMapping(value = "/naverSearch/{search}",method = RequestMethod.GET, produces = "application/text;charset=utf-8")
-//    public String naverSearch(@PathVariable String search){
-//
-//        String clientId = "dJeVRfUwEf1HVzLEDzow";//애플리케이션 클라이언트 아이디값";
-//        String clientSecret = "G4CkxupJ7k";//애플리케이션 클라이언트 시크릿값";
-//        try {
-//            String text = URLEncoder.encode(search, "UTF-8");
-//            String apiURL = "https://openapi.naver.com/v1/search/local.json?query="+ text; // json 결과
-//            //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
-//            URL url = new URL(apiURL);
-//            HttpURLConnection con = (HttpURLConnection)url.openConnection();
-//            con.setRequestMethod("GET");
-//            con.setRequestProperty("X-Naver-Client-Id", clientId);
-//            con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
-//            int responseCode = con.getResponseCode();
-//            BufferedReader br;
-//            if(responseCode==200) { // 정상 호출
-//                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-//            } else {  // 에러 발생
-//                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-//            }
-//            String inputLine;
-//            StringBuffer response = new StringBuffer();
-//            while ((inputLine = br.readLine()) != null) {
-//                response.append(inputLine);
-//            }
-//            br.close();
-//
-//                      System.out.println(response.toString());
-//
-//
-//            return response.toString();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        return "";
-//
-//
-//    }
-
-
-
-
-
-    @GetMapping(value="/place/{placeId}/{page}/{size}")
-    public Map<String,Object> placeBoardView(@PathVariable("placeId") String placeId,@PathVariable("page") int page,@PathVariable("size") int size){
-
-        return boardService.boardByPlaceId(placeId, page, size);
+       return boardService.allBoard(page,limit);
 
     }
 
-    @GetMapping("/user/{userName}/{page}/{size}")
-    public Map<String,Object> userIdBoard(@PathVariable("userName") String userName,@PathVariable("page") int page,@PathVariable("size") int size){
-        return boardService.boardByUserId(userName,page,size);
+
+
+
+    @GetMapping(value="/place/{placeId}")
+    public Map<String,Object> placeBoardView(@PathVariable("placeId") String placeId,@RequestParam("page") int page,@RequestParam("limit") int limit){
+
+        return boardService.boardByPlaceId(placeId, page, limit);
+
+    }
+
+    @GetMapping("/user/{userName}")
+    public Map<String,Object> userIdBoard(@PathVariable("userName") String userName,@RequestParam("page") int page,@RequestParam("limit") int limit){
+        return boardService.boardByUserId(userName,page,limit);
     }
 
     @GetMapping("/gradeAvg/{placeId}")
@@ -144,13 +95,13 @@ public class BoardController {
         boardDTO.add(linkTo(methodOn(BoardController.class).boardFind(boardId,userId)).withSelfRel());
 
 
-        System.out.println(userId);
-        System.out.println(boardDTO.getUser().getId());
-        System.out.println(userId.equals(boardDTO.getUser().getId()));
+
 
         if(userId.equals(boardDTO.getUser().getId())){
             boardDTO.add(linkTo(BoardController.class).slash(boardId).withRel("delete"));
+            boardDTO.add(linkTo(BoardController.class).slash(boardId).withRel("update"));
         }
+
 
         return boardDTO;
 
@@ -158,15 +109,15 @@ public class BoardController {
 
 
 
-    @PatchMapping("/")
-    public void boardUpdate(@RequestParam("grade") Grade grade,@RequestParam("content") String content, @RequestParam("boardId") Long boardId
+    @PatchMapping("/{boardId}")
+    public void boardUpdate(@RequestParam("grade") Grade grade,@RequestParam("content") String content, @PathVariable("boardId") Long boardId
         ,@RequestParam(value = "files",required = false) MultipartFile[] multipartFile , @RequestParam(value = "fileNames",required = false,defaultValue = "[]") String[] fileNames){
 
         boardService.boardUpdate(grade, content, boardId, multipartFile, fileNames);
 
     }
 
-    @PatchMapping("/{boardId}")
+    @DeleteMapping("/{boardId}")
     public void boardDelete(@PathVariable("boardId") Long boardId){
         boardService.boardDelete(boardId);
     }

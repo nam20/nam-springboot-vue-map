@@ -13,7 +13,12 @@ import sun.awt.image.ImageWatched;
 
 import java.util.Map;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
+
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
 
@@ -59,13 +64,23 @@ public class UserController {
 
 
 
-    @GetMapping("/user/{token}")
-    public UserDTO findUserByToken(@PathVariable("token") String token){
+    @PostMapping("")
+    public UserDTO findUserByToken(@RequestHeader("Authorization") String token){
+        System.out.println(token);
+        UserDTO userDTO =  userService.findUserByToken(token.substring(7));
+//        if(userDTO != null){
+//            userDTO.add(linkTo(BoardController.class).withRel("create"));
+//        }else{
+//            userDTO = new UserDTO();
+////            userDTO.add(linkTo(UserController.class).slash("join").withRel("join"));
+////            userDTO.add(linkTo(UserController.class).slash("login").withRel("login"));
+//        }
+//        new userDTO
 
-        return userService.findUserByToken(token);
+        return userDTO;
     }
 
-    @PatchMapping("/user/profile")
+    @PatchMapping("/profile")
     public void userProfileUpdate(@RequestParam(value = "profile",required = false) MultipartFile multipartFile,@RequestParam("token") String token /*@RequestParam(value = "profileName",defaultValue = "") String profileName*/){
 
        userService.userProfileUpdate(multipartFile, token);
@@ -73,7 +88,7 @@ public class UserController {
     }
 
 
-    @PostMapping("/user/profile")
+    @PostMapping("/profile")
     public String getUserProfile(/*@RequestParam("token") String token,*/ @RequestBody Map<String,String> payload){
         System.out.println(payload);
        return userService.getUserProfile(payload.get("token"));

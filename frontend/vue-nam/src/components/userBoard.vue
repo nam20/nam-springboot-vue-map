@@ -86,7 +86,7 @@ export default {
 			searchResult : '',
 			page: 0,
 			totalPages: 0,
-			pageSize : 9,
+			limit : 9,
 			hasNextPage: true
         }
     },
@@ -105,7 +105,11 @@ export default {
         loadBoards(){
             this.$axios({
 				method: 'get',
-				url: `/board/user/${this.userId}/${this.page}/${this.pageSize}`
+				url: `/board/user/${this.userId}`,
+				params:{
+					page:this.page,
+					limit:this.limit
+				}
 			})
             .then(res =>{
 				console.log(res.data);
@@ -153,7 +157,7 @@ export default {
             })
         },
         slice(){
-			this.boards = this.boards.slice(0,this.pageSize);
+			this.boards = this.boards.slice(0,this.limit);
 			this.page = 1;
 			this.hasNextPage = true;
 		}

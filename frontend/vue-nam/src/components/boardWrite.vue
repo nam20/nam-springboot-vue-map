@@ -101,11 +101,15 @@ export default {
     computed:{
         me(){
             return this.$store.state.me
+        },
+        links(){
+            return this.$store.state.links
         }
     },
     created(){ 
 
        this.$store.dispatch('loadUser')
+     
 
     },
 
@@ -131,7 +135,7 @@ export default {
 
             this.$axios({
                 method: 'post',
-                url: '/board',
+                url: `/board`,
                 data : frm,
                 headers:{
                     'Content-Type': 'multipart/form-data',

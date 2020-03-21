@@ -26,7 +26,7 @@ public class UserService {
 
     private final JwtUtil jwtUtil;
 
-    @Autowired
+
     public UserService(EntityConvertDTO entityConvertDTO,UserRepository userRepository, JwtUtil jwtUtil){
         this.entityConvertDTO = entityConvertDTO;
         this.userRepository = userRepository;

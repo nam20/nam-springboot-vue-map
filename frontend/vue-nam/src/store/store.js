@@ -18,7 +18,8 @@ export const store = new Vuex.Store({
   
     state:{
         isLogin: false,
-        me:''
+        me:'',
+        links:{}
     },
     mutations:{
           setIsLogin(state, payload){
@@ -26,17 +27,27 @@ export const store = new Vuex.Store({
           },
           setMe(state,payload){
               state.me = payload;
+              
+          },
+          setLinks(state,payload){
+              state.links = payload;
           }
     },
     actions:{
         loadUser({commit}){
-            return axios.get(`/user/${localStorage.getItem('token')}`)
-            .then(res=>{
-                commit('setMe',res.data)
+            
+
+            return axios.post(`/user`,{
+                headers:{
+                    Authorization : `Bearer ${localStorage.getItem('token')}`
+                }
             })
-            .catch(err=>{
-                console.error(err)
-            })
+                .then(res=>{
+                    commit('setMe',res.data)
+                })
+                .catch(err=>{
+                    console.error(err)
+                })
         }
         
     }
