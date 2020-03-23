@@ -10,8 +10,8 @@
 
         
         </header> -->
-            <div class="container" v-if="board">
-                <strong>{{board.placeName}}</strong>
+            <div class="container">
+                <strong>{{placeName}}</strong>
                 
                     <span>
                         의 리뷰
@@ -83,12 +83,13 @@ export default {
     data(){
         return {
             content: '',
-            
             grade : '',
-           
-            board: {},
+            placeName:'',
+            // board: {},
+            
             boardImage: [],
             showImage:[],
+
             link:{}
 
         }
@@ -160,18 +161,20 @@ export default {
             method: 'get',
             url: `/board/${this.boardId}/${this.me.id}`
             })     
-            .then(response=>{
+            .then(res=>{
                 
                 
-                if(response.data){
+                if(res.data){
 
-                    this.link = response.data._links
+                    this.link = res.data._links
                     
-                    this.board = response.data
-                    this.content = this.board.boardContent;
-                    this.grade = this.board.grade;
+                    // this.board = res.data
 
-                    this.board.files.forEach(fileName=> {
+                    this.placeName = res.data.placeName
+                    this.content = res.data.boardContent
+                    this.grade = res.data.grade
+
+                    res.data.files.forEach(fileName=> {
                             this.boardImage.push(fileName)
                             this.showImage.push('upload/' + fileName)
                     })

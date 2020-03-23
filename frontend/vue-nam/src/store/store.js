@@ -28,9 +28,6 @@ export const store = new Vuex.Store({
           setMe(state,payload){
               state.me = payload;
               
-          },
-          setLinks(state,payload){
-              state.links = payload;
           }
     },
     actions:{
