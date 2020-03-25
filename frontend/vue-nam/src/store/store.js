@@ -36,15 +36,15 @@ export const store = new Vuex.Store({
 
             return axios.post(`/user`,{
                 headers:{
-                    Authorization : `Bearer ${localStorage.getItem('token')}`
+                    'Authorization' : `Bearer ${localStorage.getItem('token')}`
                 }
             })
-                .then(res=>{
-                    commit('setMe',res.data)
-                })
-                .catch(err=>{
-                    console.error(err)
-                })
+            .then(res=>{
+                commit('setMe',res.data)
+            })
+            .catch(err=>{
+                console.error(err)
+            })
         }
         
     }

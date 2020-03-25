@@ -140,19 +140,11 @@ export default {
 	}
 	,
 	props: ['boardId'],
-	computed:{
-		me(){
-			return this.$store.state.me
-		}
-	},
-	created(){
-		this.$store.dispatch('loadUser')
-		.then(()=>{
-			this.loadBoard();
-		})
-		
 	
-		
+	created(){
+	
+		this.loadBoard();
+	
 		
 		this.loadComments();	
 
@@ -170,9 +162,13 @@ export default {
 	},
 	methods:{
 		loadBoard(){
-			this.$axios.get(`/board/${this.boardId}/${this.me.id || 0}`)
+			this.$axios.get(`/board/${this.boardId}`,{
+				headers:{
+					Authorization : `Bearer ${localStorage.getItem("token")}`
+				}
+			})
 			.then(response=>{
-				console.log(response)
+				
 				
 				this.links = response.data._links
 				

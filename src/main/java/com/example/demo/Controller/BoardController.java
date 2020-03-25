@@ -2,19 +2,15 @@ package com.example.demo.Controller;
 
 import com.example.demo.DB.*;
 import com.example.demo.DB.DTO.BoardDTO;
-import com.example.demo.DB.Entity.Board;
+import com.example.demo.DB.DTO.UserDTO;
+import com.example.demo.DB.Entity.User;
 import com.example.demo.Repository.BoardRepository;
 import com.example.demo.Service.BoardService;
-import jdk.nashorn.internal.objects.annotations.Getter;
+import com.example.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.*;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -34,10 +30,12 @@ public class BoardController {
 
     private final BoardRepository boardRepository;
 
+    private final UserService userService;
     @Autowired
-    public BoardController(BoardService boardService, BoardRepository boardRepository) {
+    public BoardController(BoardService boardService, BoardRepository boardRepository, UserService userService) {
         this.boardService = boardService;
         this.boardRepository = boardRepository;
+        this.userService = userService;
     }
 
 
@@ -81,23 +79,26 @@ public class BoardController {
 
 
 
+//
+//    @GetMapping("/{boardId}")   // 보드 id값으로 단 한개 가져오기
+//    public BoardDTO boardFindById(@PathVariable("boardId") Long boardId){
+//
+//        return  boardService.boardFindById(boardId);
+//
+//    }
 
     @GetMapping("/{boardId}")   // 보드 id값으로 단 한개 가져오기
-    public BoardDTO boardFindById(@PathVariable("boardId") Long boardId){
-
-        return  boardService.boardFindById(boardId);
-
-    }
-
-    @GetMapping("/{boardId}/{userId}")   // 보드 id값으로 단 한개 가져오기
-    public BoardDTO boardFind(@PathVariable("boardId") Long boardId,@PathVariable("userId") Long userId){
+    public BoardDTO boardFind(@PathVariable("boardId") Long boardId,@RequestHeader("Authorization") String token){
         BoardDTO boardDTO = boardService.boardFindById(boardId);
-        boardDTO.add(linkTo(methodOn(BoardController.class).boardFind(boardId,userId)).withSelfRel());
+
+        boardDTO.add(linkTo(methodOn(BoardController.class).boardFind(boardId,token)).withSelfRel());
 
 
+        if (token.length() < 7) return boardDTO;
 
+        UserDTO user = userService.findUserByToken(token.substring(7));
 
-        if(userId.equals(boardDTO.getUser().getId())){
+        if(user != null && user.getUserId().equals(boardDTO.getUser().getUserId())){
             boardDTO.add(linkTo(BoardController.class).slash(boardId).withRel("delete"));
             boardDTO.add(linkTo(BoardController.class).slash(boardId).withRel("update"));
         }

@@ -5,13 +5,9 @@
     <div style="margin-top:130px;">
        
         <section>
-         <!-- <header>
-            <h1 style="cursor:pointer;margin:0;" @click="$router.push('/')">HeeJun</h1>
-
-        
-        </header> -->
+       
             <div class="container">
-                <strong>{{placeName}}</strong>
+                <strong>{{board.placeName}}</strong>
                 
                     <span>
                         의 리뷰
@@ -33,7 +29,7 @@
                     </li>
                 </ul>
 
-                 <textarea name="" id="" cols="30" rows="10" v-model="content" :placeholder="`${me.userName}님 솔직한 리뷰를 남겨주세요.`"></textarea>
+                 <textarea name="" id="" cols="30" rows="10" v-model="content" :placeholder="`${user.userName || ''}님 솔직한 리뷰를 남겨주세요.`"></textarea>
              </div>
 
               <div class="fileSelect" >
@@ -85,26 +81,23 @@ export default {
             content: '',
             grade : '',
             placeName:'',
-            // board: {},
+            board: {},
+            user:{},
             
             boardImage: [],
             showImage:[],
+            
 
-            link:{}
+            links:{}
 
         }
     },
-    computed:{
-        me(){
-            return this.$store.state.me
-        }
-    },
+    
     created(){
 
-       this.$store.dispatch('loadUser')
-       .then(()=>{
+       
            this.loadBoard()
-       })
+      
 
 
        
@@ -135,7 +128,7 @@ export default {
 
             this.$axios({
                 method: 'patch',
-                url: `${this.link.update.href}`,
+                url: `${this.links.update.href}`,
                 data: frm,
 				headers:{
 					Authorization : `Bearer ${localStorage.getItem('token')}`
@@ -157,22 +150,26 @@ export default {
             })
         },
         loadBoard(){
-            this.$axios({
-            method: 'get',
-            url: `/board/${this.boardId}/${this.me.id}`
-            })     
+            this.$axios.get(`/board/${this.boardId}`,{
+                headers:{
+                    Authorization : `Bearer ${localStorage.getItem('token')}`
+                }
+            })
             .then(res=>{
                 
                 
                 if(res.data){
 
-                    this.link = res.data._links
+                   
+                  
+                    this.links = res.data._links
                     
-                    // this.board = res.data
+                    this.board = res.data
+                    this.user = this.board.user
 
-                    this.placeName = res.data.placeName
-                    this.content = res.data.boardContent
-                    this.grade = res.data.grade
+                   
+                    this.content = this.board.boardContent
+                    this.grade = this.board.grade
 
                     res.data.files.forEach(fileName=> {
                             this.boardImage.push(fileName)

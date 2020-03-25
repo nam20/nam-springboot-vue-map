@@ -162,7 +162,7 @@ export default {
   },
   created(){
       //this.getnewUserProfile();
-      this.$store.dispatch('loadUser')
+      //this.$store.dispatch('loadUser')
   },
   methods:{
  

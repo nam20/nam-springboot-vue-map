@@ -33,7 +33,7 @@
                         </li>
                     </ul>
                 
-                    <textarea name="" id="" cols="30" rows="10" v-model="content" :placeholder="`${me.userName}님 솔직한 리뷰를 남겨주세요.`"></textarea>
+                    <textarea name="" id="" cols="30" rows="10" v-model="content" :placeholder="`${me.userName || ''}님 솔직한 리뷰를 남겨주세요.`"></textarea>
                 </div>
                 
                     
@@ -101,9 +101,6 @@ export default {
     computed:{
         me(){
             return this.$store.state.me
-        },
-        links(){
-            return this.$store.state.links
         }
     },
     created(){ 
@@ -146,7 +143,7 @@ export default {
             .then(res=>{
                
                 
-                if(res.data.Auth=='FAIL'){
+                if(res.data.Auth === 'FAIL'){
                     window.alert('로그인이 필요합니다')
                     //this.$store.commit('setIsLogin',false);
                     this.$router.push('/')

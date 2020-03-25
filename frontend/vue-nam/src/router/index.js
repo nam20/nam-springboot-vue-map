@@ -73,16 +73,16 @@ const router = new Router({
 
 
 
-router.beforeEach((to,from,next) => {
+router.beforeEach( async (to,from,next) => {
 
-  axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
+  
 
 
   if(localStorage.getItem('token')){  //토큰 여부
-      axios({
-        method: 'post',
-        url: '/user/auth'
-      })
+
+     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
+  
+      axios.post('/user/auth')
       .then(response=>{
        
 

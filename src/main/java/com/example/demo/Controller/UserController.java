@@ -67,6 +67,7 @@ public class UserController {
     @PostMapping("")
     public UserDTO findUserByToken(@RequestHeader("Authorization") String token){
         System.out.println(token);
+
         UserDTO userDTO =  userService.findUserByToken(token.substring(7));
 //        if(userDTO != null){
 //            userDTO.add(linkTo(BoardController.class).withRel("create"));
