@@ -35,7 +35,10 @@
     <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:6.0.18.Final" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.2.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.2.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.2.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.2.2.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.2.2.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:2.2.2.RELEASE" level="project" />
@@ -68,13 +71,12 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.18" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:2.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.3" level="project" />
-    <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:2.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.1" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:2.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.zaxxer:HikariCP:3.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:5.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.2.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: servlets.com:cos:05Nov2002" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:2.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.2.2.RELEASE" level="project" />
@@ -102,17 +104,10 @@
     <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: com.auth0:java-jwt:3.9.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: commons-codec:commons-codec:1.13" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-hateoas:2.2.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.modelmapper:modelmapper:2.3.6" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.hateoas:spring-hateoas:1.0.3.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.2.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.2.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.2.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.plugin:spring-plugin-core:2.0.0.RELEASE" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework.restdocs:spring-restdocs-mockmvc:2.0.4.RELEASE" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: javax.servlet:javax.servlet-api:4.0.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework.restdocs:spring-restdocs-core:2.0.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-hateoas:2.2.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.hateoas:spring-hateoas:1.0.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.plugin:spring-plugin-core:2.0.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.6" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.9" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
