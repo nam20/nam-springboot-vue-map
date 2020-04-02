@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios';
 import router from '../router'
 
-
+// axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
 
 Vue.prototype.$axios = axios;
 

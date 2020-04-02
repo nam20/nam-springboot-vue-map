@@ -10,9 +10,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
 
 
-    @Autowired
-    JwtAuthInterceptor jwtAuthInterceptor;
+    private JwtAuthInterceptor jwtAuthInterceptor;
 
+    public WebConfig(JwtAuthInterceptor jwtAuthInterceptor) {
+        this.jwtAuthInterceptor = jwtAuthInterceptor;
+    }
 
 
     @Override

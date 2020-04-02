@@ -1,7 +1,5 @@
 package com.example.demo.Service;
 
-import oracle.net.ns.Message;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;

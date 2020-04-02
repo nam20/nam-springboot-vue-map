@@ -62,7 +62,7 @@ public class Board {
 
 
 
-    @ElementCollection(fetch = FetchType.LAZY)
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "BOARD_FILES",joinColumns = @JoinColumn(name = "board_id"))
     @Column(name = "files")
     private List<String> files = new ArrayList<>();
@@ -87,7 +87,7 @@ public class Board {
          this.placeName = placeName;
          this.boardAvailable = boardAvailable;
          this.user = user;
-         user.getBoards().add(this);
+//         user.getBoards().add(this);
          this.files = files;
          this.comments = comments;
 

@@ -90,9 +90,9 @@ public class UserController {
 
 
     @PostMapping("/profile")
-    public String getUserProfile(/*@RequestParam("token") String token,*/ @RequestBody Map<String,String> payload){
-        System.out.println(payload);
-       return userService.getUserProfile(payload.get("token"));
+    public String getUserProfile(/*@RequestParam("token") String token,*/ @RequestHeader("Authorization") String payload){
+
+       return userService.getUserProfile(payload.substring(7));
     }
 
 

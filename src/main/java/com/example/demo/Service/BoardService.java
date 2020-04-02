@@ -15,10 +15,13 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.transaction.Transactional;
 import java.io.File;
 import java.util.*;
 
+
 @Service
+@Transactional
 public class BoardService {
 
 
@@ -80,26 +83,18 @@ public class BoardService {
 
     }
 
-
     public Map<String,Object> allBoard(int page, int size){
 
 //        List<Board> boardList = boardRepository.findByBoardAvailable(true, PageRequest.of(page,size)).getContent();
         Page<Board> boardPage = boardRepository.findByBoardAvailable(true,PageRequest.of(page, size, Sort.by("createdTime").descending()));  //솔트
-//        System.out.println("======");
-//        System.out.println("======");
-//        System.out.println("======");
-//
-//        System.out.println("getTotalPages: " + boardPage.getTotalPages());
-//        System.out.println("gisLastPage: " + boardPage.isLast());
-//
-//        System.out.println("======");
-//        System.out.println("======");
-//        System.out.println("======");
+
 
         List<BoardDTO> boardDTOList = new ArrayList<>();
         boardPage.getContent().forEach(board -> boardDTOList.add(
                 entityConvertDTO.boardDTOBuilder(board,
                 entityConvertDTO.userDTOBulider(board.getUser()))));
+
+
 
         Map<String,Object> map = new HashMap<>();
         map.put("boardList",boardDTOList);

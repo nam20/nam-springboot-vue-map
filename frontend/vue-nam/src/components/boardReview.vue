@@ -19,7 +19,7 @@
 								
 									<div style="float:left;">
 										<img v-if="!!board.user.userProfile" :src="'upload/'+ board.user.userProfile"  alt="" class="boardProfile">
-										<img v-else src="upload/default.png" alt="" class="boardProfile">
+										<img v-else src="upload/defaultProfile.png" alt="" class="boardProfile">
 										<!-- <h2 style="display:inline;vertical-align:top;letter-spacing:2px;">{{board.user.userName}}</h2> -->
 										<router-link :to="`/userBoard/${board.user.userName}`" style="vertical-align:top;letter-spacing:2px;font-size: x-large;">{{board.user.userName}}</router-link>
 										<router-link :to="`/map/${board.placeName}`" style="display:block;font-weight:bold">{{board.placeName}}</router-link>

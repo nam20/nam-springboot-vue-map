@@ -8,8 +8,10 @@ import com.example.demo.DB.Entity.Comment;
 import com.example.demo.DB.Entity.User;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 @Component
 public class EntityConvertDTO {
 

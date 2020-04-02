@@ -154,7 +154,9 @@ export default {
       newUserProfile:'',
       profileUpdateModal:false,
       profileImage:'',
-      profileSubmit:false
+      profileSubmit:false,
+
+      
       
       
       
@@ -164,6 +166,7 @@ export default {
       //this.getnewUserProfile();
       //this.$store.dispatch('loadUser')
   },
+  
   methods:{
  
     
@@ -235,6 +238,7 @@ export default {
                 
                 this.$store.commit('setIsLogin',true);
                 window.alert('로그인되었습니다.')
+                
 
               
             }
@@ -315,7 +319,7 @@ export default {
         data: frm,
         headers:{
             'Content-Type': 'multipart/form-data',
-             Authorization : `Bearer ${localStorage.getItem("token")}`
+             'Authorization' : `Bearer ${localStorage.getItem("token")}`
         }
         
       })
@@ -341,13 +345,27 @@ export default {
 
 
     loadProfileImage(){
+
+      // this.$axios({
+      //   method:'post',
+      //   url:'/user/profile',
+        
+       
+      //   headers:{
+      //     'Authorization' : `Bearer ${localStorage.getItem("token")}`
+      //   }
+      // })
      
-      this.$axios.post('/user/profile',{
-        token:localStorage.getItem('token')
-      })
+      this.$axios.post('/user/profile',null,{
+            headers:{
+              'Authorization' : `Bearer ${localStorage.getItem("token")}`
+            }
+        }
+      )
       .then(response=>{
-        console.log(response)
-        if(response.data){
+        console.log(response.data)
+        console.log(typeof response.data)
+        if(response.data && typeof response.data !== 'object'){
           this.profileImage = 'upload/' + response.data
         }
       })

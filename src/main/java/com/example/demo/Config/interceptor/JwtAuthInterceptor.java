@@ -23,6 +23,10 @@ public class JwtAuthInterceptor implements HandlerInterceptor {
 
         String token = request.getHeader("Authorization");
         System.out.println("인터셉터");
+
+
+        //System.out.println(System.getProperty("user.dir"));
+
         if(request.getMethod().equals("GET")) return true;
 
         if(jwtUtil.verifyToken(token)){

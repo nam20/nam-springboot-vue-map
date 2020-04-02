@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.transaction.Transactional;
 import java.io.File;
 import java.util.Optional;
 import java.util.UUID;
 
+
+@Transactional
 @Service
 public class UserService {
 
@@ -121,8 +124,11 @@ public class UserService {
         Optional<User> userOptional = userRepository.findByToken(token);
 
         if(userOptional.isPresent()){
-            userProfile = entityConvertDTO.userDTOBulider(userOptional.get()).getUserProfile();
+
+//            userProfile = entityConvertDTO.userDTOBulider(userOptional.get()).getUserProfile();
+            userProfile = userOptional.get().getUserProfile();
         }
+
 
 //        userRepository.findByToken(token).ifPresent(user -> {
 //             entityConvertDTO.userDTOBulider(user).getUserProfile();
