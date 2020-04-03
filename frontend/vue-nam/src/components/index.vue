@@ -225,14 +225,14 @@ export default {
         .then((res)=>{
           
           
-            if(res.data == '없는 아이디입니다.' || res.data == '비밀번호가 틀렸습니다.'){
+            if(res.data === '없는 아이디입니다.' || res.data === '비밀번호가 틀렸습니다.'){
 
               this.failResult = res.data;
           
             }
             else {
                 this.userClear();
-                console.log(res.data);
+                
 
                 localStorage.setItem("token",res.data);
                 
@@ -304,7 +304,7 @@ export default {
     userProfileUpdate(){
 
       var frm = new FormData();
-      frm.set('token',localStorage.getItem('token'))
+      // frm.set('token',localStorage.getItem('token'))
 
 
       if(this.newUserProfile){
@@ -319,7 +319,7 @@ export default {
         data: frm,
         headers:{
             'Content-Type': 'multipart/form-data',
-             'Authorization' : `Bearer ${localStorage.getItem("token")}`
+            'Authorization' : `Bearer ${localStorage.getItem("token")}`
         }
         
       })
@@ -346,15 +346,7 @@ export default {
 
     loadProfileImage(){
 
-      // this.$axios({
-      //   method:'post',
-      //   url:'/user/profile',
-        
-       
-      //   headers:{
-      //     'Authorization' : `Bearer ${localStorage.getItem("token")}`
-      //   }
-      // })
+   
      
       this.$axios.post('/user/profile',null,{
             headers:{
@@ -363,8 +355,8 @@ export default {
         }
       )
       .then(response=>{
-        console.log(response.data)
-        console.log(typeof response.data)
+       
+        
         if(response.data && typeof response.data !== 'object'){
           this.profileImage = 'upload/' + response.data
         }

@@ -53,7 +53,7 @@ public class BoardService {
             for (MultipartFile file : multipartFile) {
                 System.out.println(file.getName());
                 System.out.println(file.getOriginalFilename());
-                String savePath = "C:/projects/demo-nam22/src/main/webapp/upload/";//request.getRealPath("/resources/upload").replaceAll("\\\\","/");
+                String savePath = "/var/lib/tomcat9/webapps/ROOT/upload/";//request.getRealPath("/resources/upload").replaceAll("\\\\","/");
                 String random = UUID.randomUUID().toString().replaceAll("-", "");
                 File nfile = new File(savePath + random.substring(20) + file.getOriginalFilename());
 
@@ -207,7 +207,7 @@ public class BoardService {
 
     public void boardUpdate(Grade grade, String content, Long boardId,MultipartFile[] multipartFile , String[] fileNames){
 
-        String savePath = "C:/projects/demo-nam22/src/main/webapp/upload/";
+        String savePath = "/var/lib/tomcat9/webapps/ROOT/upload/";
 
         boardRepository.findById(boardId).ifPresent(board -> {
 

@@ -4,10 +4,7 @@ import com.example.demo.DB.DTO.UserDTO;
 import com.example.demo.DB.Entity.User;
 import com.example.demo.DB.EntityConvertDTO;
 import com.example.demo.Repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
@@ -74,7 +71,7 @@ public class UserService {
 
     public void userProfileUpdate(MultipartFile multipartFile, String token){
 
-        String savePath = "C:/projects/demo-nam22/src/main/webapp/upload/";
+        String savePath = "/var/lib/tomcat9/webapps/ROOT/upload/";
 
         userRepository.findByToken(token).ifPresent(user -> {
 
@@ -117,24 +114,16 @@ public class UserService {
     }
 
 
-    public String getUserProfile(@RequestParam("token") String token){
-
-        String userProfile = "";
+    public String getUserProfile(String token){
 
         Optional<User> userOptional = userRepository.findByToken(token);
 
         if(userOptional.isPresent()){
 
-//            userProfile = entityConvertDTO.userDTOBulider(userOptional.get()).getUserProfile();
-            userProfile = userOptional.get().getUserProfile();
+            return userOptional.get().getUserProfile();
         }
 
-
-//        userRepository.findByToken(token).ifPresent(user -> {
-//             entityConvertDTO.userDTOBulider(user).getUserProfile();
-//         });
-
-        return userProfile;
+        return "";
     }
 
 }

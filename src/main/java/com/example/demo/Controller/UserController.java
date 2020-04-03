@@ -5,16 +5,10 @@ import com.example.demo.DB.EntityConvertDTO;
 import com.example.demo.Repository.UserRepository;
 import com.example.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
-import org.springframework.hateoas.Link;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import sun.awt.image.ImageWatched;
 
 import java.util.Map;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 
 @RestController
@@ -56,7 +50,7 @@ public class UserController {
     @PostMapping(value="/login")
     public String login(@RequestBody Map<String, String> payload){
 
-        System.out.println(payload);
+
 
         //return "";
         return userService.login(payload.get("userId"),payload.get("userPassword"));
@@ -82,9 +76,9 @@ public class UserController {
     }
 
     @PatchMapping("/profile")
-    public void userProfileUpdate(@RequestParam(value = "profile",required = false) MultipartFile multipartFile,@RequestParam("token") String token /*@RequestParam(value = "profileName",defaultValue = "") String profileName*/){
+    public void userProfileUpdate(@RequestParam(value = "profile",required = false) MultipartFile multipartFile,@RequestHeader("Authorization") String token /*@RequestParam(value = "profileName",defaultValue = "") String profileName*/){
 
-       userService.userProfileUpdate(multipartFile, token);
+       userService.userProfileUpdate(multipartFile, token.substring(7));
 
     }
 

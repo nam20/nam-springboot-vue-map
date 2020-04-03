@@ -22,7 +22,7 @@ public class JwtAuthInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request,HttpServletResponse response, Object handler) throws Exception {
 
         String token = request.getHeader("Authorization");
-        System.out.println("인터셉터");
+
 
 
         //System.out.println(System.getProperty("user.dir"));

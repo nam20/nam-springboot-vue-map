@@ -1,11 +1,8 @@
 package com.example.demo.Repository;
 
 import com.example.demo.DB.Entity.Board;
-
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

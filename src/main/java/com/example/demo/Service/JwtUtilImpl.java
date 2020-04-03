@@ -52,9 +52,7 @@ public class JwtUtilImpl implements JwtUtil {
 
     @Override
     public boolean verifyToken(String token) {
-        System.out.println("jwt");
-        System.out.println(token);
-        System.out.println(ClassLoader.getSystemClassLoader().getResource(".").getPath());
+
 
         if(token == null || token.equals("Bearer null") || token.equals("Bearer") || token.equals("")){
                 logger.info("토큰 없음");
