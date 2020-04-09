@@ -51,7 +51,7 @@
 
 										<div style="float:left;margin:10px 0 0 10px;">
 											<img v-if="comment.user.userProfile" :src="'upload/' + comment.user.userProfile" class="commentImage" alt="" >
-											<img v-else src="upload/default.png" class="commentImage" alt="">
+											<img v-else src="upload/defaultProfile.png" class="commentImage" alt="">
 											<strong style="margin:0 0 0 10px;vertical-align:top;">{{comment.user.userName}}</strong>
 										</div>
 
@@ -123,6 +123,11 @@ export default {
 		myCarousel: VueCarousel
 		
 	},
+	computed:{
+		me(){
+			return this.$store.state.me
+		}
+	},
 	data(){
 		return {
 			board: '',
@@ -142,19 +147,16 @@ export default {
 	props: ['boardId'],
 	
 	created(){
-	
+		
+		this.$store.dispatch('loadUser')
 		this.loadBoard();
 	
-		
 		this.loadComments();	
 
 		this.commentInterval = setInterval(()=>{
 			this.loadComments();
 				
 		 }, 3000)
-		
-	},
-	mounted(){
 		
 	},
 	beforeDestroy(){
