@@ -65,7 +65,7 @@
 								
 								<!-- <textarea v-model="comment" v-on:keyup.enter="commentWrite" name="" id="" cols="30" rows="10" style="border-top-color:#E9E9E9;"></textarea> -->
 								<input v-if="me" type="text" v-model="commentContent" v-on:keyup.enter="commentWrite" style="border-top-color:#E9E9E9;width: 50%;">
-								
+								<button @click="doSend(commentContent)">센드</button>
 								<div style="margin-bottom:30px;">
 									<button @click="$router.go(-1)" >돌아가기</button>
 									<button v-bind:disabled="! me || !commentContent" @click="commentWrite">댓글등록</button>
@@ -139,7 +139,10 @@ export default {
 			// isWriter: false,
 			carouselArr:[],
 			carouselModal: false,
-			links:{}
+			links:{},
+
+
+			webSocket:''
 
 		}
 	}
@@ -151,6 +154,11 @@ export default {
 		this.$store.dispatch('loadUser')
 		this.loadBoard();
 	
+
+		this.sendMessage()
+
+
+
 		this.loadComments();	
 
 		this.commentInterval = setInterval(()=>{
@@ -161,6 +169,7 @@ export default {
 	},
 	beforeDestroy(){
 		clearInterval(this.commentInterval);
+		this.webSocket.close();
 	},
 	methods:{
 		loadBoard(){
@@ -273,7 +282,41 @@ export default {
 					this.$router.push(`/board/${this.board.placeId}/${this.board.placeName}`)
 				}
 			})
-		}
+		},
+
+
+
+
+		sendMessage(){
+			this.webSocket = new WebSocket(`ws://localhost:18080/websocket/${this.boardId}`)
+			
+			this.webSocket.onopen = (evt) =>{
+				this.onOpen(evt)
+			}
+
+			this.webSocket.onmessage  = (evt) =>{
+				this.onMessage(evt)
+			}
+
+			this.webSocket.onerror  = (evt) =>{
+				this.onError(evt)
+			}
+		
+		},
+		onOpen(evt){
+			console.log(evt)
+		
+		},
+		onMessage(evt){
+			console.log(evt)
+		},
+		onError(evt){
+			console.log(evt)
+		},
+		doSend(message){
+			
+			this.webSocket.send(message)
+		},
 
 
 	}

@@ -78,7 +78,7 @@ public class UserService {
 
 
             if(multipartFile != null){
-                System.out.println(multipartFile);
+
                 String random = UUID.randomUUID().toString().replaceAll("-", "");
                 File nfile = new File(savePath + random.substring(20) + multipartFile.getOriginalFilename());
 

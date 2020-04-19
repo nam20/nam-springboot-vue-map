@@ -15,6 +15,8 @@
         <button @click="kakaoMap" style="box-shadow:none;height:60px;padding:0 10px;"><i class="fas fa-search fa-3x" style="vertical-align:middle;margin:0 0 5px 0;"></i></button>
         
       </div>
+     
+      
     
       <div>
           <div v-if="this.$store.state.isLogin">
@@ -156,6 +158,10 @@ export default {
       profileImage:'',
       profileSubmit:false,
 
+
+
+      
+
       
       
       
@@ -163,6 +169,7 @@ export default {
     }
   },
   created(){
+    
       //this.getnewUserProfile();
       //this.$store.dispatch('loadUser')
   },
@@ -369,7 +376,14 @@ export default {
 
     addFiles(){
       this.$refs.newUserProfile.click();
-    }
+    },
+
+
+
+
+    
+   
+
   },
   components:{
     Modal
