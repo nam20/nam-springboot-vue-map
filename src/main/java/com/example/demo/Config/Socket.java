@@ -1,12 +1,19 @@
 package com.example.demo.Config;
+import com.example.demo.DB.DTO.CommentDTO;
+import com.example.demo.DB.Entity.Comment;
+import com.example.demo.DB.Entity.User;
+import com.example.demo.Service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +24,11 @@ import java.util.concurrent.CopyOnWriteArraySet;
 @Component
 @ServerEndpoint("/websocket/{id}")
 public class Socket {
+
+    @Autowired
+    private UserService userService;
+
+
 
     private static Logger log = LoggerFactory.getLogger(Socket.class);
     public static Set<Socket> listeners = new CopyOnWriteArraySet<>();
@@ -72,11 +84,20 @@ public class Socket {
     public void onMessage(String message, @PathParam("id") String id) {
         log.info("onMessage called()...");
 
+
         //broadcast(message);
+//        CommentDTO commentDTO = CommentDTO.builder()
+//                .user(userService.findUserByToken(payload[0]))
+//                .commentContent(message)
+//                .createdDate(LocalDateTime.now())
+//                .build();
+//        CommentDTO commentDTO = new CommentDTO();
+
 
         for(Session session : messageUserlist.get(id)){
             try{
-                session.getBasicRemote().sendText(message);
+               //session.getBasicRemote().sendObject(commentDTO);
+                session.getBasicRemote().sendText(message + "," + LocalDateTime.now().toString());
             }catch(IOException e){
                 log.error("Caught exception while sending message to Session " + session.getId());
             }

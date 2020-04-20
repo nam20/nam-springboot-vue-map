@@ -1,8 +1,6 @@
 package com.example.demo.Controller;
 
 import com.example.demo.DB.DTO.CommentDTO;
-import com.example.demo.DB.Entity.Board;
-import com.example.demo.DB.Entity.Comment;
 import com.example.demo.DB.EntityConvertDTO;
 import com.example.demo.Repository.BoardRepository;
 import com.example.demo.Repository.CommentRepository;
@@ -10,10 +8,8 @@ import com.example.demo.Service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 public class CommentController {

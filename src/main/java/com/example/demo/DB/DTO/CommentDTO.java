@@ -2,15 +2,17 @@ package com.example.demo.DB.DTO;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class CommentDTO {
 
-    private Long id;
+
 
     private UserDTO user;
 
@@ -19,9 +21,9 @@ public class CommentDTO {
     private LocalDateTime createdDate;
 
     @Builder
-    public CommentDTO(Long id, UserDTO user, String commentContent,LocalDateTime createdDate){
+    public CommentDTO( UserDTO user, String commentContent,LocalDateTime createdDate){
 
-        this.id = id;
+
         this.user = user;
         this.createdDate = createdDate;
         this.commentContent = commentContent;

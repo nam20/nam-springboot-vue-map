@@ -32,7 +32,7 @@ public class EntityConvertDTO {
 
     public CommentDTO commentDTOBuilder(Comment comment, UserDTO userDTO){
         return CommentDTO.builder()
-                .id(comment.getId())
+//                .id(comment.getId())
                 .commentContent(comment.getCommentContent())
                 .createdDate(comment.getCreatedDate())
                 .user(userDTO)

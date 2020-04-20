@@ -64,11 +64,11 @@
 								</div>
 								
 								<!-- <textarea v-model="comment" v-on:keyup.enter="commentWrite" name="" id="" cols="30" rows="10" style="border-top-color:#E9E9E9;"></textarea> -->
-								<input v-if="me" type="text" v-model="commentContent" v-on:keyup.enter="commentWrite" style="border-top-color:#E9E9E9;width: 50%;">
-								<button @click="doSend(commentContent)">센드</button>
+								<input v-if="me" type="text" v-model="commentContent" v-on:keyup.enter="commentWrite(),doSend(commentContent)" style="border-top-color:#E9E9E9;width: 50%;">
+								
 								<div style="margin-bottom:30px;">
 									<button @click="$router.go(-1)" >돌아가기</button>
-									<button v-bind:disabled="! me || !commentContent" @click="commentWrite">댓글등록</button>
+									<button v-bind:disabled="! me || !commentContent" @click="commentWrite(),doSend(commentContent)">댓글등록</button>
 
 									
 
@@ -151,7 +151,8 @@ export default {
 	
 	created(){
 		
-		this.$store.dispatch('loadUser')
+		if(localStorage.getItem('token')) this.$store.dispatch('loadUser')
+
 		this.loadBoard();
 	
 
@@ -161,14 +162,16 @@ export default {
 
 		this.loadComments();	
 
-		this.commentInterval = setInterval(()=>{
-			this.loadComments();
+		
+
+		// this.commentInterval = setInterval(()=>{
+		// 	this.loadComments();
 				
-		 }, 3000)
+		//  }, 3000)
 		
 	},
 	beforeDestroy(){
-		clearInterval(this.commentInterval);
+		//clearInterval(this.commentInterval);
 		this.webSocket.close();
 	},
 	methods:{
@@ -217,7 +220,8 @@ export default {
 				.then(response=>{
 				
 					
-					this.comments = response.data;
+					this.comments = response.data.reverse();
+					console.log(this.comments)
 					
 				})
 				.catch(err=>{
@@ -308,14 +312,28 @@ export default {
 		
 		},
 		onMessage(evt){
-			console.log(evt)
+			console.log(evt.data)
+
+			var comment = evt.data.split(',');
+			console.log(comment);
+			if(comment[2] === 'null') comment[2] = null;
+			this.comments.push({
+				user:{
+					userName:comment[1],
+					userProfile:comment[2]
+				},
+				commentContent:comment[0],
+				createdDate:comment[3]
+			})
+
+
 		},
 		onError(evt){
 			console.log(evt)
 		},
 		doSend(message){
 			
-			this.webSocket.send(message)
+			this.webSocket.send(`${message},${this.me.userName},${this.me.userProfile}`)
 		},
 
 
