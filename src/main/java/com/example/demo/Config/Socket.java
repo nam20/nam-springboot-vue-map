@@ -1,18 +1,13 @@
 package com.example.demo.Config;
-import com.example.demo.DB.DTO.CommentDTO;
-import com.example.demo.DB.Entity.Comment;
-import com.example.demo.DB.Entity.User;
-import com.example.demo.Service.UserService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,8 +20,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 @ServerEndpoint("/websocket/{id}")
 public class Socket {
 
-    @Autowired
-    private UserService userService;
+
 
 
 
@@ -39,8 +33,7 @@ public class Socket {
 
     @OnOpen
     public void onOpen(Session session, @PathParam("id") String id ){
-        System.out.println(session.getId());
-        System.out.println(id);
+
         log.info("onOpen called()...");
         addOnlineCount();
         //this.session = session;
@@ -76,7 +69,7 @@ public class Socket {
             if(messageUserlist.get(id).isEmpty()) messageUserlist.remove(id);
 
         }
-        System.out.println(messageUserlist);
+
         //listeners.remove(this);
     }
 

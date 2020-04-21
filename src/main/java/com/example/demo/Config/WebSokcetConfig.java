@@ -8,7 +8,7 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
-@Configuration
+@Configuration // finished 101 ... @EnableWebSocketMessageBroker 404
 @EnableWebSocketMessageBroker
 public class WebSokcetConfig implements WebSocketMessageBrokerConfigurer {
 

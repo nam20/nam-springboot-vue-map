@@ -221,7 +221,7 @@ export default {
 				
 					
 					this.comments = response.data.reverse();
-					console.log(this.comments)
+					
 					
 				})
 				.catch(err=>{
@@ -292,7 +292,7 @@ export default {
 
 
 		sendMessage(){
-			this.webSocket = new WebSocket(`ws://localhost:18080/websocket/${this.boardId}`)
+			this.webSocket = new WebSocket(`ws://ec2-18-216-19-135.us-east-2.compute.amazonaws.com:8080/websocket/${this.boardId}`)
 			
 			this.webSocket.onopen = (evt) =>{
 				this.onOpen(evt)
@@ -308,14 +308,14 @@ export default {
 		
 		},
 		onOpen(evt){
-			console.log(evt)
+			//console.log(evt)
 		
 		},
 		onMessage(evt){
-			console.log(evt.data)
+			//console.log(evt.data)
 
 			var comment = evt.data.split(',');
-			console.log(comment);
+			//console.log(comment);
 			if(comment[2] === 'null') comment[2] = null;
 			this.comments.push({
 				user:{
@@ -329,7 +329,7 @@ export default {
 
 		},
 		onError(evt){
-			console.log(evt)
+			//console.log(evt)
 		},
 		doSend(message){
 			

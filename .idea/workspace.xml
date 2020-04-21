@@ -7,31 +7,86 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5666de4-0c08-4177-ab25-157e0d440779" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_websocket_5_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_websocket_5_2_2_RELEASE.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vue-nam/src/components/boardReview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vue-nam/src/components/boardReview.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Config/Socket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Config/Socket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Config/WebSokcetConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/ChatController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/CommentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/CommentDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DB/EntityConvertDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DB/EntityConvertDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/css/app.95013dee5259013accc555a173388b50.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/css/app.95013dee5259013accc555a173388b50.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/js/1.ae6f3b158a7506624199.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/js/1.ae6f3b158a7506624199.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/js/manifest.e0fb68d6cd220d018e9e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/js/manifest.e0fb68d6cd220d018e9e.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/css/app.39595c12fbdcff500458da7392d3fefd.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/css/app.39595c12fbdcff500458da7392d3fefd.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/js/1.1a74d8c2cde0fb55ca68.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/js/1.1a74d8c2cde0fb55ca68.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/js/manifest.0c5982771ef18005006d.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/static/js/manifest.0c5982771ef18005006d.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ROOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Config/Socket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Config/Socket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/CommentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/CommentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Config/WebConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Config/WebConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/ChatController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/DB/DTO/CommentDTO$CommentDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/DB/DTO/CommentDTO$CommentDTOBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/DB/DTO/CommentDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/DB/DTO/CommentDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/DB/EntityConvertDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/DB/EntityConvertDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/DB/DTO/UserDTO$UserDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/DB/DTO/UserDTO$UserDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/DB/DTO/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/DB/DTO/UserDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/css/app.95013dee5259013accc555a173388b50.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/css/app.95013dee5259013accc555a173388b50.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/1.ae6f3b158a7506624199.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/1.ae6f3b158a7506624199.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/manifest.e0fb68d6cd220d018e9e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/manifest.e0fb68d6cd220d018e9e.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/static/css/app.001acdd88188e211a646be7b747f1051.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/static/css/app.001acdd88188e211a646be7b747f1051.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/static/css/app.39595c12fbdcff500458da7392d3fefd.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/static/css/app.39595c12fbdcff500458da7392d3fefd.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/static/css/app.af5dd07352f22b3b7f5193a1c24121ef.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/static/css/app.af5dd07352f22b3b7f5193a1c24121ef.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/1.1a74d8c2cde0fb55ca68.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/1.1a74d8c2cde0fb55ca68.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/1.9a11cbf56d40dff85436.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/1.9a11cbf56d40dff85436.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/manifest.0c5982771ef18005006d.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/manifest.0c5982771ef18005006d.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/manifest.73243c4997569cb6f55c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/manifest.73243c4997569cb6f55c.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/Config/WebConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/Config/WebConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/Controller/CommentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/Controller/CommentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/Controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/DB/DTO/CommentDTO$CommentDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/DB/DTO/CommentDTO$CommentDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/DB/DTO/CommentDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/DB/DTO/CommentDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/DB/DTO/UserDTO$UserDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/DB/DTO/UserDTO$UserDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/DB/DTO/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/DB/DTO/UserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/DB/EntityConvertDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/DB/EntityConvertDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/Service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/com/example/demo/Service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/css/app.001acdd88188e211a646be7b747f1051.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/css/app.001acdd88188e211a646be7b747f1051.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/css/app.19f5255fb74b05f0c9b8a0b7e82511ca.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/css/app.19f5255fb74b05f0c9b8a0b7e82511ca.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/css/app.af5dd07352f22b3b7f5193a1c24121ef.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/css/app.af5dd07352f22b3b7f5193a1c24121ef.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/css/app.ec7a53393f41d4c510f5536a2c29c704.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/css/app.ec7a53393f41d4c510f5536a2c29c704.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/1.04b71dcdac5a53157c21.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/1.04b71dcdac5a53157c21.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/1.42927ad0af82a299771d.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/1.42927ad0af82a299771d.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/1.9a11cbf56d40dff85436.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/1.9a11cbf56d40dff85436.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/app.65a64e43ac2a2869eb58.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/app.65a64e43ac2a2869eb58.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/app.a0ad519ab0527fa11784.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/app.a0ad519ab0527fa11784.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/manifest.06381588e45ad28fb848.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/manifest.06381588e45ad28fb848.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/manifest.73243c4997569cb6f55c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/manifest.73243c4997569cb6f55c.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/manifest.e37d9af9316a92dac242.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/WEB-INF/classes/static/static/js/manifest.e37d9af9316a92dac242.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -47,10 +102,33 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Config/WebConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="70">
+              <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#936#937#0" expanded="true" />
+                <element signature="e#996#997#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Config/Socket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="85" selection-start-line="85" selection-end-line="85" />
+            <state relative-caret-position="223">
+              <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -59,10 +137,48 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Config/WebSokcetConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#763#764#0" expanded="true" />
+                <element signature="e#814#815#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/CommentDTO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+            <state relative-caret-position="216">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/UserDTO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/BoardDTO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,32 +189,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/EntityConvertDTO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="36" column="52" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Controller/CommentController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Service/UserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2424">
-              <caret line="111" column="49" selection-start-line="111" selection-start-column="49" selection-end-line="111" selection-end-column="49" />
+            <state relative-caret-position="-552">
+              <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,32 +201,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Service/BoardService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="984">
-              <caret line="58" selection-start-line="58" selection-end-line="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/Entity/Comment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/Entity/Board.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1272">
-              <caret line="64" column="46" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
+            <state relative-caret-position="166">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -197,7 +265,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/example/demo/DB/UserLoginResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/MyBatisConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/DB/User.java" />
@@ -220,7 +287,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/GreetingController.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/example/demo/DemoApplicationTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/example/demo/Controller/BoardControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/UserDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/BoardController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/BoardDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/DemoApplication.java" />
@@ -228,7 +294,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Service/CommentService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/DB/Entity/Board.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Repository/UserRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Config/WebConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Repository/BoardRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Config/interceptor/JwtAuthInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Service/JwtUtilImpl.java" />
@@ -238,16 +303,19 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/ChatMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/MessageType.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/WebSocketEventListener.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Config/WebSokcetConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/ChatController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/DB/EntityConvertDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/CommentController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/CommentDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Config/CommentDTOEncoder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/UserDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/CommentDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Config/Socket.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Service/UserService.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Config/WebConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/demo/Config/WebSokcetConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
       </list>
     </option>
   </component>
@@ -276,8 +344,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1903" />
-    <option name="y" value="235" />
+    <option name="x" value="-2021" />
+    <option name="y" value="327" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -287,6 +355,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -422,7 +491,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -478,7 +546,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DemoApplication">
+  <component name="RunManager" selected="Maven.demo [compile,war:war]">
     <configuration name="DemoApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplication" />
       <module name="demo" />
@@ -583,7 +651,7 @@
     <frame x="-1928" y="181" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.38346666" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.4016" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -592,7 +660,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49866667" weight="0.2890625" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49866667" visible="true" weight="0.2890625" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3984375" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -617,19 +685,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/static/css/app.9d33fe72087b739f9ca6841ec6959a22.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/static/css/app.e9bc04daae7de70e8c0da69f49b9fdfa.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/GradeAttributeConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#230#231#0" expanded="true" />
-            <element signature="e#274#275#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/MyBatisConfig.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/BoardMapper.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/Grade.java">
@@ -673,26 +728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/BoardDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/Entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -762,18 +797,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Config/WebConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#582#583#0" expanded="true" />
-            <element signature="e#642#643#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Repository/BoardRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -795,16 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/UserDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Config/interceptor/JwtAuthInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-48">
@@ -822,32 +835,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Controller/ChatController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#469#470#0" expanded="true" />
-            <element signature="e#524#525#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Config/WebSokcetConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -872,30 +859,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Config/CommentDTOEncoder.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Config/Socket.java">
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/_AZTMP0_/WEB-INF/classes/application.properties" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/Entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/CommentDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/EntityConvertDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="36" column="52" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+        <state relative-caret-position="403">
+          <caret line="46" column="39" lean-forward="true" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -906,26 +874,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2424">
-          <caret line="111" column="49" selection-start-line="111" selection-start-column="49" selection-end-line="111" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Service/BoardService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="984">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -949,6 +897,124 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Service/BoardService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/_AZTMP0_/WEB-INF/classes/static/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Controller/ChatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/UserDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/BoardDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/DTO/CommentDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/DB/EntityConvertDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-552">
+          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Config/Socket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Config/WebConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#936#937#0" expanded="true" />
+            <element signature="e#996#997#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/demo/Config/WebSokcetConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#763#764#0" expanded="true" />
+            <element signature="e#814#815#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
         </state>
       </provider>
     </entry>
