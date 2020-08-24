@@ -15,7 +15,7 @@ Vue.use(Vuex);
 
 
 export const store = new Vuex.Store({
-  
+
     state:{
         isLogin: false,
         me:'',
@@ -27,12 +27,12 @@ export const store = new Vuex.Store({
           },
           setMe(state,payload){
               state.me = payload;
-              
+
           }
     },
     actions:{
         loadUser({commit}){
-            
+
 
             return axios.post(`/user`,{
                 headers:{
@@ -46,8 +46,8 @@ export const store = new Vuex.Store({
                 console.error(err)
             })
         }
-        
+
     }
-        
-    
+
+
 });

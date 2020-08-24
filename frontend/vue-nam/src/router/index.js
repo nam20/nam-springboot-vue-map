@@ -13,7 +13,7 @@ Vue.use(Router)
 
 
 const router = new Router({
- 
+
 //   mode: 'history'
 //  ,
   routes: [
@@ -22,7 +22,7 @@ const router = new Router({
       name: 'index',
       component: index
     },
-   
+
     {
       path: '/board/:placeId/:placeName',
       component: () => import('@/components/placeBoard.vue'),
@@ -32,7 +32,7 @@ const router = new Router({
       path: '/map',
       component: kakaomap
       // meta: {authRequired:true}
-     
+
     },
     {
       path: '/map/:search',
@@ -50,12 +50,12 @@ const router = new Router({
       path: '/board',
       component: () => import('@/components/allBoard.vue')
     },
-    
+
     {
       path: '/boardReview/:boardId',
       component: () => import('@/components/boardReview'),
       props: true
-      
+
     },
     {
       path: '/boardUpdate/:boardId',
@@ -75,16 +75,16 @@ const router = new Router({
 
 router.beforeEach( async (to,from,next) => {
 
-  
+
 
 
   if(localStorage.getItem('token')){  //토큰 여부
 
      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
-  
+
       axios.post('/user/auth')
       .then(response=>{
-       
+
 
         if(to.matched.some((routeInfo) => {
           return routeInfo.meta.authRequired;   //인증 필요 여부
@@ -96,23 +96,23 @@ router.beforeEach( async (to,from,next) => {
                 next();
 
               } else {   //토큰 변조, 만료
-                
-                window.alert('로그인이 필요합니다.'); 
-                store.commit('setIsLogin',false);  
+
+                window.alert('로그인이 필요합니다.');
+                store.commit('setIsLogin',false);
                 localStorage.clear();
                 next('/');
               }
 
         }else{
-              if(response.data.Auth !== 'FAIL') {  //인증 성공 여부 axios 
-                store.commit('setIsLogin',true);        
+              if(response.data.Auth !== 'FAIL') {  //인증 성공 여부 axios
+                store.commit('setIsLogin',true);
               }
               else {  //토큰 변조, 만료
-                store.commit('setIsLogin',false);  
+                store.commit('setIsLogin',false);
                 localStorage.clear();
               }
               next();
-        }   
+        }
 
       })
       .catch(err=>{
@@ -120,21 +120,21 @@ router.beforeEach( async (to,from,next) => {
       })
 
   }else{
-      if(to.matched.some((routeInfo) => { 
+      if(to.matched.some((routeInfo) => {
         return routeInfo.meta.authRequired; //인증 필요 여부
       })){
         window.alert('로그인이 필요합니다.');
-        
+
         next('/');
 
       } else {
 
-        store.commit('setIsLogin',false);  
+        store.commit('setIsLogin',false);
         next();
       }
 
   }
-  
+
 })
 
 export default  router

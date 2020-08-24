@@ -1,6 +1,5 @@
 package com.example.demo.DB.Entity;
 
-import com.example.demo.DB.Entity.Board;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
