@@ -10,7 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5666de4-0c08-4177-ab25-157e0d440779" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DB/EntityConvertDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DB/EntityConvertDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/BoardController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,10 +185,10 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="애플리케이션.DemoApplication" />
-      <item itemvalue="애플리케이션.Unnamed" />
       <item itemvalue="JUnit.UserRepositoryTest.findByUserName" />
       <item itemvalue="Maven.demo [compile,war:war]" />
+      <item itemvalue="애플리케이션.DemoApplication" />
+      <item itemvalue="애플리케이션.Unnamed" />
     </list>
     <recent_temporary>
       <list>

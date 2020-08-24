@@ -19,13 +19,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 @RequestMapping("/board")
 public class BoardController {
-
-
-
-
-
-
-
+    
     private final BoardService boardService;
 
     private final BoardRepository boardRepository;
