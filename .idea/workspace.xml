@@ -10,38 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5666de4-0c08-4177-ab25-157e0d440779" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_2_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/demo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vue-nam/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vue-nam/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vue-nam/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vue-nam/src/store/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DB/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DB/Entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DemoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/demo.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/DB/Entity/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/DB/Entity/User$UserBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/DB/Entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/DB/Entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/DemoApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/DemoApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/css/app.72b8580bc1871d17a28cfde041e6b18b.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/css/app.72b8580bc1871d17a28cfde041e6b18b.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/css/app.89f128858f35c258cb30d3646ed2e2d6.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/css/app.89f128858f35c258cb30d3646ed2e2d6.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/1.6b9c6dc0a0a18c568505.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/1.6b9c6dc0a0a18c568505.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/1.7fdb609f834b02c1636e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/1.7fdb609f834b02c1636e.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/manifest.934b284d7620b52c7e52.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/manifest.934b284d7620b52c7e52.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/manifest.c0e89228a3007c96a734.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/static/js/manifest.c0e89228a3007c96a734.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DB/EntityConvertDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DB/EntityConvertDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +54,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
