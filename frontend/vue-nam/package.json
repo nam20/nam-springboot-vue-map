@@ -13,7 +13,7 @@
   "dependencies": {
     "@chenfengyuan/vue-carousel": "^1.0.3",
     "@fortawesome/vue-fontawesome": "^0.1.9",
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "vue": "^2.6.11",
     "vue-persistent-state": "^0.2.1",
     "vue-reactive-localstorage": "git+https://github.com/HAlex/vue-reactive-localstorage.git",
